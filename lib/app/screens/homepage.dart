@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../data/images.dart';
+import '../data/data.dart';
 import 'details_page.dart';
 
 class MyHomePage extends StatelessWidget {

@@ -8,7 +8,7 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(data['title']),
+        title: Text(data['title'] ?? 'Flutter Shikhi'),
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -16,7 +16,10 @@ class DetailsPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              Text(data['desc1']),
+              Text(data['desc1'] ?? '',
+                  style: const TextStyle(
+                    fontSize: 15,
+                  )),
               const SizedBox(
                 height: 16,
               ),
@@ -29,7 +32,10 @@ class DetailsPage extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              Text(data['desc2'] ?? ''),
+              Text(data['desc2'] ?? '',
+                  style: const TextStyle(
+                    fontSize: 15,
+                  )),
               const SizedBox(
                 height: 16,
               ),
@@ -42,7 +48,10 @@ class DetailsPage extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              Text(data['desc3'] ?? ''),
+              Text(data['desc3'] ?? '',
+                  style: const TextStyle(
+                    fontSize: 15,
+                  )),
               const SizedBox(
                 height: 16,
               ),
@@ -55,7 +64,10 @@ class DetailsPage extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              Text(data['desc4'] ?? ''),
+              Text(data['desc4'] ?? '',
+                  style: const TextStyle(
+                    fontSize: 15,
+                  )),
               const SizedBox(
                 height: 16,
               ),
@@ -68,7 +80,10 @@ class DetailsPage extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              Text(data['desc5'] ?? ''),
+              Text(data['desc5'] ?? '',
+                  style: const TextStyle(
+                    fontSize: 15,
+                  )),
               const SizedBox(
                 height: 20,
               ),
