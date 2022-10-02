@@ -25,7 +25,7 @@ class DetailsPage extends StatelessWidget {
                   ? const SizedBox(
                       height: 16,
                     )
-                  : SizedBox(
+                  : const SizedBox(
                       height: 16,
                     ),
               data['image1'] != ""

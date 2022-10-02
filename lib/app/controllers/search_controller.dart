@@ -16,9 +16,19 @@ class SearchController extends GetxController {
           post['desc5']!.toLowerCase().contains(query.toLowerCase())) {
         searchResult.remove(post);
         searchResult.add(post);
-      } 
+      }
     }
     update();
-    print(searchResult);
+  }
+
+  // generate related posts
+  final relatedPosts = [];
+  List<dynamic> relatedPostsFunc(String title) {
+    for (final post in topicData) {
+      if (post['title']!.toLowerCase().contains(title.toLowerCase())) {
+        relatedPosts.add(post);
+      }
+    }
+    return relatedPosts;
   }
 }
