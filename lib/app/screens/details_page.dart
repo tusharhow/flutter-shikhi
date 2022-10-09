@@ -38,7 +38,7 @@ class DetailsPage extends StatelessWidget {
                   ? const SizedBox(
                       height: 16,
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
               Text(data['desc2'] ?? '',
                   style: const TextStyle(
                     fontSize: 15,

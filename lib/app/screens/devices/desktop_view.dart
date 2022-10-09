@@ -4,7 +4,7 @@ import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:get/get.dart';
 import '../../data/data.dart';
 import '../desktop_details_page.dart';
-
+import 'dart:html' as html;
 
 class DesktopView extends StatelessWidget {
   const DesktopView({Key? key}) : super(key: key);
@@ -38,21 +38,18 @@ class DesktopView extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            TextButton(
-                                onPressed: () {},
-                                child: const Text('Home',
-                                    style: TextStyle(fontSize: 23))),
-                            const SizedBox(width: 20),
                             GestureDetector(
                               onTap: () {
-                               
+                                html.window.open(
+                                    'https://github.com/tusharhow/flutter-shikhi',
+                                    'new tab');
                               },
                               child: Row(
                                 children: const [
                                   Icon(Icons.star_border_rounded),
                                   SizedBox(width: 5),
                                   Text(
-                                    'স্টার দিন',
+                                    'Github',
                                     style: TextStyle(
                                         fontSize: 17,
                                         fontWeight: FontWeight.bold),
@@ -72,7 +69,7 @@ class DesktopView extends StatelessWidget {
                       Column(
                         children: const [
                           Text(
-                            'ফ্লাটার শিখি',
+                            'Flutter Shikhi',
                             style: TextStyle(
                               fontSize: 70,
                               fontWeight: FontWeight.bold,
