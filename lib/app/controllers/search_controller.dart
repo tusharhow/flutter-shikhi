@@ -46,17 +46,6 @@ class SearchController extends GetxController {
             useMaterial3: true,
           ));
     GetStorage().write('isDarkMode', isDarkMode);
-    if (isDarkMode) {
-      Get.snackbar('Dark Mode', 'Dark Mode is on',
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.black,
-          colorText: Colors.white);
-    } else {
-      Get.snackbar('Dark Mode', 'Dark Mode is off',
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.white,
-          colorText: Colors.black);
-    }
     update();
   }
 

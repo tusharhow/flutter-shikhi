@@ -8,8 +8,8 @@ import 'app/screens/devices/homepage.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
-  await GetStorage.init();
   setPathUrlStrategy();
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
