@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../controllers/search_controller.dart';
 
 class ReusableTextFormField extends StatelessWidget {
@@ -18,7 +17,8 @@ class ReusableTextFormField extends StatelessWidget {
       child: Card(
         elevation: 5,
         child: TextFormField(
-          style: const TextStyle(color: Colors.black45),
+          style: TextStyle(
+              color: controller.isDarkMode ? Colors.white : Colors.black45),
           onChanged: (String query) {
             if (query.isNotEmpty) {
               controller.searchPost(query);
@@ -33,7 +33,8 @@ class ReusableTextFormField extends StatelessWidget {
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
             hintText: 'Search a topic',
-            hintStyle: const TextStyle(color: Colors.black38),
+            hintStyle: TextStyle(
+                color: controller.isDarkMode ? Colors.white : Colors.black38),
             enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -50,7 +51,11 @@ class ReusableTextFormField extends StatelessWidget {
                       controller.searchResult.clear();
                       controller.update();
                     },
-                    icon: const Icon(Icons.clear, color: Colors.black38),
+                    icon: Icon(
+                      Icons.clear,
+                      color:
+                          controller.isDarkMode ? Colors.white : Colors.black38,
+                    ),
                   ),
           ),
         ),

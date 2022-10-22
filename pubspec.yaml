@@ -29,11 +29,16 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cached_network_image: ^3.2.2
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
   get: ^4.6.5
+  get_storage: ^2.0.3
   intl: ^0.17.0
+  url_launcher: ^6.1.6
+  url_strategy: ^0.2.0
+  widget_with_codeview: ^2.0.1+2
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -55,6 +60,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/fonts/
+    - lib/app/data/codes/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -71,4 +77,4 @@ flutter:
         - asset: assets/fonts/Golesta.ttf
     - family: Borno
       fonts:
-        - asset: assets/fonts/SobujBorno.ttf
+        - asset: assets/fonts/Hindi-Shiliguri.ttf

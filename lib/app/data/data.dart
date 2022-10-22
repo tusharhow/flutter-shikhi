@@ -1,3 +1,5 @@
+import 'package:flutter_shikhi/app/data/codes/hello_world.dart';
+
 List topicData = [
   {
     "id": 1,
@@ -7,14 +9,21 @@ List topicData = [
         "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।",
     "desc2":
         "ফ্লাটার এর সিনট্যাক্স সহজ তাই যেকেউ চাইলেই শুরু করতে পারেন। এখন যদি বলা হয় কি কি জানা থাকা লাগবে ফ্লাটার শিখতে তাহলে বলবো, আপনার বেসিক প্রোগ্রামিং ধারনা থাকলে আপনি শুরু করার জন্য প্রস্তুত। আপনার যদি প্রোগ্রামিং সম্পর্কে কোন ধারনা না থাকে তাহলে আমাদের প্রোগ্রামিং শিখার কোর্স দেখে নিতে পারেন।",
-    "desc3": "dddddd",
-    "desc4": "dddddd",
+    "desc3": "ফ্লাটারের প্রথম সংস্করণের কোডনাম ছিলো "
+        "স্কাই"
+        " যেটা শুধুমাত্র অ্যান্ড্রয়েডে চলতো। ২০১৫ সালের ডার্ট ডেভেলপার শীর্ষ সম্মেলনে ধারাবাহিকভাবে প্রতি সেকেন্ডে ১২০টি ফ্রেম রেন্ডারের সক্ষমতার বর্ণনা করে এটাকে উন্মোচিত করা হয়। শাংহাইয়ে গুগল ডেভেলপার দিবসের মূল বক্তব্যে গুগল ফ্লাটার রিলিজ প্রিভিউ ২-এর ঘোষণা দেয়, যেটা ৪ ডিসেম্বর ২০১৮ সালে মুক্তি পাওয়া ফ্লাটার ১.০-এর আগে ফ্লাটারের সবচেয়ে বড় মুক্তি, যেটা ফ্লাটার লাইভ ইভেন্টে প্রকাশিত হয়, এবং ফ্লাটারের প্রথম স্টেবল সংস্করণ। ২০১৯ সালের ১১ ডিসেম্বর ফ্লাটার ইন্টারেক্টিভ ইভেন্টে ফ্লাটার ১.১২ প্রকাশিত হয়। ফ্লাটার অ্যাপলিকেশনগুলো ডার্ট প্রোগ্রামিং ভাষায় লেখা হয় এবং যেখানে অন্য অনেক প্রোগ্রামিং ভাষা যেমন জাভা, জাভাস্ক্রিপ্টের উল্লেখযোগ্য অনেক বৈশিষ্ট্যের দেখা মিলে। উইন্ডোজ, ম্যাক ওএস এবং লিনাক্স ফ্লাটার জাস্ট-ইন-টাইম এক্সিকিউশন ইঞ্জিন ডার্ট ভার্চুয়াল মেশিনে চলে।",
+    "desc4":
+        "ফ্লাটারের বিশেষ একটা সুবিধা হলো হট রিলোড, যেখানে অ্যাপলিকেশন চলা অবস্থায়ই উৎস কোডের পরিবর্তন অ্যাপলিকেশনে ইনজেক্ট করা সম্ভব। ফ্লাটার ব্যবহার করে মুক্তি পাওয়া অ্যাপলিকেশনগুলো অ্যাহেড-অভ-টাইম বা এওটি কম্পিলেশন ব্যবহার করে, যেটা অ্যান্ড্রয়েড ও আইওএসে তুলনামূলক ভালো পারফরমেন্স নিশ্চিত করে। প্রাথমিকভাবে সি ++ তে লেখা লিফ্টারের ইঞ্জিন গুগলের স্কিয়া গ্রাফিক্স লাইব্রেরি ব্যবহার করে নিম্ন-স্তরের রেন্ডারিং সহায়তা সরবরাহ করে। এছাড়াও এটি প্ল্যাটফর্ম-নির্দিষ্ট এসডিকে যেমন অ্যান্ড্রয়েড এবং আইওএস দ্বারা সরবরাহিত ইন্টারফেস ব্যবহার করতে পারে। [৭] ফ্লাটার ইঞ্জিন হ'ল ফ্লাটার অ্যাপ্লিকেশনগুলি হোস্ট করার জন্য একটি বহনযোগ্য রানটাইম। এটি অ্যানিমেশন এবং গ্রাফিক্স, ফাইল এবং নেটওয়ার্ক ইনপুট/আউটপুট , অ্যাক্সেসিবিলিটি সমর্থন, প্লাগইন আর্কিটেকচার এবং একটি ডার্ট রানটাইম এবং সংকলন সরঞ্জামচয়ন সহ ফ্লার্টারের মূল লাইব্রেরিগুলি প্রয়োগ করে। বেশিরভাগ ডেভেলপাররা ফ্লাটার ফ্রেমওয়ার্কের মাধ্যমে ফ্লাটারের সাথে যোগাযোগ করে যা একটি আধুনিক, প্রতিক্রিয়াশীল কাঠামো এবং প্ল্যাটফর্মের একটি সমৃদ্ধ সেট, লেআউট এবং ফাউন্ডেশন উইজেট সরবরাহ করে।",
     "desc5":
-        "ফ্লাটার শেখা সহজ। তাই নতুন অনেকে এটার প্রতি আগ্রহ প্রকাশ করছে। আমাদের এই ছোট্য প্রয়াশ আপনাকে ফ্লাটারের ব্যাসিক শিখতে সাহায্য করবে।",
-    "image1": "assets/images/image.png",
-    "image2": "assets/images/image.png",
-    "image3": "assets/images/image.png",
-    "image4": "assets/images/image.png",
+        "ফ্লাটার শেখা সহজ। তাই নতুন অনেকে এটার প্রতি আগ্রহ প্রকাশ করছে। আমাদের এই ছোট্য প্রয়াশ আপনাকে ফ্লাটারের ব্যাসিক শিখতে সাহায্য করবে। ডার্টে লেখা ফাউন্ডেশন লাইব্রেরি প্রাথমিক ক্লাস এবং ফাংশন সরবরাহ করে যা ইঞ্জিনের সাথে যোগাযোগের জন্য এপিআই এর মতো উপাদানগুলো ব্যবহার করে ফ্লাটার অ্যাপ্লিকেশন তৈরি করতে ব্যবহার করা হয়।",
+    "desc6": "হ্যালো ওয়ার্ল্ড উদাহরণ",
+    "code": "lib/app/data/codes/hello_world.dart",
+    "preview": const HelloWorldApp(),
+    "image1": "assets/images/flutter.png",
+    "image2": "assets/images/flutter.png",
+    "image3": "assets/images/flutter.png",
+    "image4": "assets/images/flutter.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 2,
@@ -31,6 +40,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 3,
@@ -47,6 +57,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 4,
@@ -63,6 +74,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 5,
@@ -79,6 +91,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 6,
@@ -95,6 +108,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 7,
@@ -111,6 +125,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 8,
@@ -127,6 +142,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 9,
@@ -143,6 +159,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 10,
@@ -159,6 +176,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 11,
@@ -175,6 +193,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 12,
@@ -191,6 +210,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 13,
@@ -207,6 +227,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 14,
@@ -223,6 +244,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 15,
@@ -239,6 +261,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 16,
@@ -255,6 +278,7 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
   },
   {
     "id": 17,
@@ -271,5 +295,23 @@ List topicData = [
     "image2": "assets/images/image2.png",
     "image3": "assets/images/image.png",
     "image4": "assets/images/image.png",
-  }
+    "image5": "assets/images/flutter.png",
+  },
+  {
+    "id": 18,
+    "title": "ফ্লাটার স্লাইডার",
+    "subtitle": "ফ্লাটার এর স্লাইডার এর বিস্তারিত এবং ব্যবহার জানুন",
+    "desc1":
+        "কয়েকভাবে আপনি আপনার অ্যাপে ছবি দেখাতে পারেন। আপনি লোকাল ফাইল(আপনার এমুলেটর,পিসি) থেকে ইমেজ ব্যবহার করতে পারবেন, ইন্টারনেট থেকে সরাসরি ছবির লিংক ব্যবহার করে ছবি দেখাতে পারবেন। মেমোরি থেকে ছবি নিয়ে তা ব্যবহার করতে পারবেন।",
+    "desc2": "(1) Image.asset('images/cat.png')",
+    "desc3": "(2) Image.network('https://facebook.com/image.png')",
+    "desc4": "(3) Image.memory(bytes)",
+    "desc5":
+        "এভাবে আপনি বিভিন্য জায়গা থেকে ছবি নিয়ে তা অ্যাপে প্রদর্শন করাতে পারেন।",
+    "image1": "assets/images/image.png",
+    "image2": "assets/images/image2.png",
+    "image3": "assets/images/image.png",
+    "image4": "assets/images/image.png",
+    "image5": "assets/images/flutter.png",
+  },
 ];
