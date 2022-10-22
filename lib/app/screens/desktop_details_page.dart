@@ -10,7 +10,10 @@ class BigScreenDetailsPage extends StatelessWidget {
     final formatDate = DateFormat('dd-MM-yyyy : hh-mm').format(DateTime.now());
     return Scaffold(
       appBar: AppBar(
-        title: Text(data['title'] ?? 'Flutter Shikhi'),
+        title: Text(data['title'] ?? 'Flutter Shikhi',
+            style: const TextStyle(
+              fontFamily: 'Borno',
+            )),
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -39,6 +42,7 @@ class BigScreenDetailsPage extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Borno',
                 ),
               ),
               const SizedBox(
@@ -50,6 +54,7 @@ class BigScreenDetailsPage extends StatelessWidget {
                   data['desc1'] ?? '',
                   style: const TextStyle(
                     fontSize: 20,
+                    fontFamily: 'GolestaBorno',
                   ),
                 ),
               ),
@@ -69,6 +74,7 @@ class BigScreenDetailsPage extends StatelessWidget {
                   data['desc2'] ?? '',
                   style: const TextStyle(
                     fontSize: 20,
+                    fontFamily: 'GolestaBorno',
                   ),
                 ),
               ),
@@ -88,6 +94,7 @@ class BigScreenDetailsPage extends StatelessWidget {
                   data['desc3'] ?? '',
                   style: const TextStyle(
                     fontSize: 20,
+                    fontFamily: 'GolestaBorno',
                   ),
                 ),
               ),
@@ -107,6 +114,7 @@ class BigScreenDetailsPage extends StatelessWidget {
                   data['desc4'] ?? '',
                   style: const TextStyle(
                     fontSize: 20,
+                    fontFamily: 'GolestaBorno',
                   ),
                 ),
               ),
@@ -119,6 +127,7 @@ class BigScreenDetailsPage extends StatelessWidget {
                   data['desc5'] ?? '',
                   style: const TextStyle(
                     fontSize: 20,
+                    fontFamily: 'GolestaBorno',
                   ),
                 ),
               ),

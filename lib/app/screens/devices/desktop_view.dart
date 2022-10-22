@@ -79,12 +79,18 @@ class DesktopView extends StatelessWidget {
                           SizedBox(height: 20),
                           Text(
                             'ফ্লাটার শিখির মাধ্যমে আপনি বাংলায় ফ্লাটার এর সব বিষয় শিখতে পারবেন।',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Borno',
+                            ),
                           ),
                           SizedBox(height: 10),
                           Text(
                             'আপনি ফ্লাটার শিখি এ আপনার প্রশ্ন করতে পারবেন।',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Borno',
+                            ),
                           ),
                         ],
                       ),
@@ -157,14 +163,20 @@ class DesktopView extends StatelessWidget {
                                   final topic = controller.searchResult[index];
                                   return ListTile(
                                     title: Text(topic['title'],
-                                        style: const TextStyle(fontSize: 20)),
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontFamily: 'Borno',
+                                        )),
                                     leading: const Icon(
                                       Icons.search,
                                       color: Colors.blue,
                                       size: 40,
                                     ),
                                     subtitle: Text(topic['subtitle'],
-                                        style: const TextStyle(fontSize: 15)),
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: 'Borno',
+                                        )),
                                     onTap: () {
                                       Navigator.push(
                                         context,
@@ -199,14 +211,20 @@ class DesktopView extends StatelessWidget {
                                   final topic = topicData[index];
                                   return ListTile(
                                     title: Text(topic['title'],
-                                        style: const TextStyle(fontSize: 20)),
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontFamily: 'Borno',
+                                        )),
                                     leading: const Icon(
                                       Icons.widgets,
                                       color: Colors.blue,
                                       size: 40,
                                     ),
                                     subtitle: Text(topic['subtitle'],
-                                        style: const TextStyle(fontSize: 15)),
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: 'GolestaBorno',
+                                        )),
                                     onTap: () {
                                       Navigator.push(
                                         context,

@@ -8,7 +8,12 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(data['title'] ?? 'Flutter Shikhi'),
+        title: Text(
+          data['title'] ?? 'Flutter Shikhi',
+          style: const TextStyle(
+            fontFamily: 'GolestaBorno',
+          ),
+        ),
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -20,6 +25,7 @@ class DetailsPage extends StatelessWidget {
               Text(data['desc1'] ?? '',
                   style: const TextStyle(
                     fontSize: 15,
+                    fontFamily: 'GolestaBorno',
                   )),
               data['image1'] != ""
                   ? const SizedBox(
@@ -42,6 +48,7 @@ class DetailsPage extends StatelessWidget {
               Text(data['desc2'] ?? '',
                   style: const TextStyle(
                     fontSize: 15,
+                    fontFamily: 'GolestaBorno',
                   )),
               data['image2'] != ""
                   ? const SizedBox(
@@ -64,6 +71,7 @@ class DetailsPage extends StatelessWidget {
               Text(data['desc3'] ?? '',
                   style: const TextStyle(
                     fontSize: 15,
+                    fontFamily: 'GolestaBorno',
                   )),
               data['image3'] != ""
                   ? const SizedBox(
@@ -84,6 +92,7 @@ class DetailsPage extends StatelessWidget {
               Text(data['desc4'] ?? '',
                   style: const TextStyle(
                     fontSize: 15,
+                    fontFamily: 'GolestaBorno',
                   )),
               data['image4'] != ""
                   ? const SizedBox(
@@ -104,6 +113,7 @@ class DetailsPage extends StatelessWidget {
               Text(data['desc5'] ?? '',
                   style: const TextStyle(
                     fontSize: 15,
+                    fontFamily: 'GolestaBorno',
                   )),
               const SizedBox(
                 height: 20,

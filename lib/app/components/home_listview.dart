@@ -19,12 +19,24 @@ class HomeListView extends StatelessWidget {
           final topic = topicData[index];
 
           return ListTile(
-            title: Text(topic['title']),
+            title: Text(
+              topic['title'],
+              style: const TextStyle(
+                fontFamily: 'Borno',
+                fontSize: 20,
+              ),
+            ),
             leading: const Icon(
               Icons.widgets,
               color: Colors.blue,
             ),
-            subtitle: Text(topic['subtitle']),
+            subtitle: Text(
+              topic['subtitle'],
+              style: const TextStyle(
+                fontFamily: 'GolestaBorno',
+                fontSize: 16,
+              ),
+            ),
             onTap: () {
               Navigator.push(
                 context,
