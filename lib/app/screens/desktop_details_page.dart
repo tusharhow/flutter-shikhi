@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:get/get.dart';
@@ -30,15 +29,26 @@ class BigScreenDetailsPage extends StatelessWidget {
               Center(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: CachedNetworkImage(
-                    imageUrl: data['image1'],
+                  child: FadeInImage.assetNetwork(
+                    placeholder: 'assets/icons/load.png',
+                    placeholderCacheHeight: 300,
+                    placeholderCacheWidth: 300,
+                    placeholderFit: BoxFit.cover,
+                    placeholderScale: 0.5,
+                    image: data['image1'],
                     height: 400,
-                    placeholder: (context, url) => const Center(
-                        child: CircularProgressIndicator(
-                      color: Color(0xFF2c3e50),
-                    )),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                    fadeInCurve: Curves.easeIn,
+                    fadeInDuration: const Duration(seconds: 1),
+                    fadeOutCurve: Curves.easeOut,
+                    fadeOutDuration: const Duration(seconds: 1),
+                    imageErrorBuilder: (context, error, stackTrace) =>
+                        const Center(
+                      child: Icon(
+                        Icons.error,
+                        size: 35,
+                        color: Colors.red,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -87,14 +97,21 @@ class BigScreenDetailsPage extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              CachedNetworkImage(
-                imageUrl: data['image2'],
+              FadeInImage.assetNetwork(
+                placeholder: 'assets/icons/load.png',
+                image: data['image2'],
                 height: 300,
-                placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(
-                  color: Color(0xFF2c3e50),
-                )),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
+                fadeInCurve: Curves.easeIn,
+                fadeInDuration: const Duration(seconds: 1),
+                fadeOutCurve: Curves.easeOut,
+                fadeOutDuration: const Duration(seconds: 1),
+                imageErrorBuilder: (context, error, stackTrace) => const Center(
+                  child: Icon(
+                    Icons.error,
+                    size: 35,
+                    color: Colors.red,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 16,
@@ -112,14 +129,21 @@ class BigScreenDetailsPage extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              CachedNetworkImage(
-                imageUrl: data['image3'],
+              FadeInImage.assetNetwork(
+                placeholder: 'assets/icons/load.png',
+                image: data['image3'],
                 height: 300,
-                placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(
-                  color: Color(0xFF2c3e50),
-                )),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
+                fadeInCurve: Curves.easeIn,
+                fadeInDuration: const Duration(seconds: 1),
+                fadeOutCurve: Curves.easeOut,
+                fadeOutDuration: const Duration(seconds: 1),
+                imageErrorBuilder: (context, error, stackTrace) => const Center(
+                  child: Icon(
+                    Icons.error,
+                    color: Colors.red,
+                    size: 35,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 16,
@@ -137,14 +161,21 @@ class BigScreenDetailsPage extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              CachedNetworkImage(
-                imageUrl: data['image4'],
+              FadeInImage.assetNetwork(
+                placeholder: 'assets/icons/load.png',
+                image: data['image4'],
                 height: 300,
-                placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(
-                  color: Color(0xFF2c3e50),
-                )),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
+                fadeInCurve: Curves.easeIn,
+                fadeInDuration: const Duration(seconds: 1),
+                fadeOutCurve: Curves.easeOut,
+                fadeOutDuration: const Duration(seconds: 1),
+                imageErrorBuilder: (context, error, stackTrace) => const Center(
+                  child: Icon(
+                    Icons.error,
+                    size: 35,
+                    color: Colors.red,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 16,

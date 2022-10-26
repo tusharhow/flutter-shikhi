@@ -1,9 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:get/get.dart';
 import 'package:widget_with_codeview/widget_with_codeview.dart';
-import '../data/codes/hello_world.dart';
 
 class DetailsPage extends StatelessWidget {
   const DetailsPage({Key? key, required this.data}) : super(key: key);
@@ -41,15 +39,22 @@ class DetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    CachedNetworkImage(
-                      imageUrl: data['image1'],
+                    FadeInImage.assetNetwork(
+                      placeholder: 'assets/icons/load.png',
+                      image: data['image1'],
                       height: 200,
-                      placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(
-                        color: Color(0xFF2c3e50),
-                      )),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      fadeInCurve: Curves.easeIn,
+                      fadeInDuration: const Duration(seconds: 1),
+                      fadeOutCurve: Curves.easeOut,
+                      fadeOutDuration: const Duration(seconds: 1),
+                      imageErrorBuilder: (context, error, stackTrace) =>
+                          const Center(
+                        child: Icon(
+                          Icons.error,
+                          size: 35,
+                          color: Colors.red,
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -64,15 +69,22 @@ class DetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    CachedNetworkImage(
-                      imageUrl: data['image2'],
+                    FadeInImage.assetNetwork(
+                      placeholder: 'assets/icons/load.png',
+                      image: data['image2'],
                       height: 200,
-                      placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(
-                        color: Color(0xFF2c3e50),
-                      )),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      fadeInCurve: Curves.easeIn,
+                      fadeInDuration: const Duration(seconds: 1),
+                      fadeOutCurve: Curves.easeOut,
+                      fadeOutDuration: const Duration(seconds: 1),
+                      imageErrorBuilder: (context, error, stackTrace) =>
+                          const Center(
+                        child: Icon(
+                          Icons.error,
+                          size: 35,
+                          color: Colors.red,
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -87,15 +99,22 @@ class DetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    CachedNetworkImage(
-                      imageUrl: data['image3'],
+                    FadeInImage.assetNetwork(
+                      placeholder: 'assets/icons/load.png',
+                      image: data['image3'],
                       height: 200,
-                      placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(
-                        color: Color(0xFF2c3e50),
-                      )),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      fadeInCurve: Curves.easeIn,
+                      fadeInDuration: const Duration(seconds: 1),
+                      fadeOutCurve: Curves.easeOut,
+                      fadeOutDuration: const Duration(seconds: 1),
+                      imageErrorBuilder: (context, error, stackTrace) =>
+                          const Center(
+                        child: Icon(
+                          Icons.error,
+                          size: 35,
+                          color: Colors.red,
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -110,15 +129,22 @@ class DetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    CachedNetworkImage(
-                      imageUrl: data['image4'],
+                    FadeInImage.assetNetwork(
+                      placeholder: 'assets/icons/load.png',
+                      image: data['image4'],
                       height: 200,
-                      placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(
-                        color: Color(0xFF2c3e50),
-                      )),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      fadeInCurve: Curves.easeIn,
+                      fadeInDuration: const Duration(seconds: 1),
+                      fadeOutCurve: Curves.easeOut,
+                      fadeOutDuration: const Duration(seconds: 1),
+                      imageErrorBuilder: (context, error, stackTrace) =>
+                          const Center(
+                        child: Icon(
+                          Icons.error,
+                          size: 35,
+                          color: Colors.red,
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -141,15 +167,22 @@ class DetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    CachedNetworkImage(
-                      imageUrl: data['image5'],
+                    FadeInImage.assetNetwork(
+                      placeholder: 'assets/icons/load.png',
+                      image: data['image5'],
                       height: 200,
-                      placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(
-                        color: Color(0xFF2c3e50),
-                      )),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      fadeInCurve: Curves.easeIn,
+                      fadeInDuration: const Duration(seconds: 1),
+                      fadeOutCurve: Curves.easeOut,
+                      fadeOutDuration: const Duration(seconds: 1),
+                      imageErrorBuilder: (context, error, stackTrace) =>
+                          const Center(
+                        child: Icon(
+                          Icons.error,
+                          size: 35,
+                          color: Colors.red,
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 20,
