@@ -191,55 +191,74 @@ class DesktopView extends StatelessWidget {
                     ),
                     const SizedBox(height: 80),
                     controller.searchResult.isNotEmpty
-                        ? CustomScrollView(
-                            primary: false,
-                            shrinkWrap: true,
-                            slivers: [
-                              SliverPadding(
-                                padding: const EdgeInsets.all(16.0),
-                                sliver: SliverGrid.count(
-                                  childAspectRatio: 4.0,
-                                  crossAxisCount: 3,
-                                  children: List.generate(
-                                      controller.searchResult.length, (index) {
-                                    final topic =
-                                        controller.searchResult[index];
-                                    return ListTile(
-                                      title: Text(topic['title'],
-                                          style: const TextStyle(
-                                            fontSize: 22,
-                                            fontFamily: 'Borno',
-                                          )),
-                                      leading: const Icon(
-                                        Icons.search,
-                                        color: Colors.blue,
-                                        size: 40,
-                                      ),
-                                      subtitle: Text(topic['subtitle'],
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontFamily: 'Borno',
-                                            color: controller.isDarkMode
-                                                ? Colors.white54
-                                                : Colors.black45,
-                                          )),
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                            builder: (context) =>
-                                                BigScreenDetailsPage(
-                                              data: topic,
-                                            ),
+                        ? Column(
+                            children: [
+                              const Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 20),
+                                  child: Text(
+                                    'সার্চ রেজাল্ট সমূহ',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontFamily: 'Borno',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              CustomScrollView(
+                                primary: false,
+                                shrinkWrap: true,
+                                slivers: [
+                                  SliverPadding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    sliver: SliverGrid.count(
+                                      childAspectRatio: 4.0,
+                                      crossAxisCount: 3,
+                                      children: List.generate(
+                                          controller.searchResult.length,
+                                          (index) {
+                                        final topic =
+                                            controller.searchResult[index];
+                                        return ListTile(
+                                          title: Text(topic['title'],
+                                              style: const TextStyle(
+                                                fontSize: 22,
+                                                fontFamily: 'Borno',
+                                              )),
+                                          leading: const Icon(
+                                            Icons.search,
+                                            color: Colors.blue,
+                                            size: 40,
+                                          ),
+                                          subtitle: Text(topic['subtitle'],
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontFamily: 'Borno',
+                                                color: controller.isDarkMode
+                                                    ? Colors.white54
+                                                    : Colors.black45,
+                                              )),
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    BigScreenDetailsPage(
+                                                  data: topic,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
                                           ),
                                         );
-                                      },
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    );
-                                  }),
-                                ),
+                                      }),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           )

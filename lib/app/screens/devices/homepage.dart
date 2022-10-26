@@ -18,15 +18,21 @@ class MyHomePage extends StatelessWidget {
                 controller.isDarkMode ? Colors.black : Colors.white,
             appBar: AppBar(
               title: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Image.asset(
-                    'assets/logos/flutter.png',
-                    height: 40,
+                    'assets/logos/logo.png',
+                    height: 50,
                   ),
-                  const SizedBox(
-                    width: 10,
+                  Text(
+                    'ফ্লাটার শিখি',
+                    style: TextStyle(
+                      fontSize: 22,
+                      color:
+                          controller.isDarkMode ? Colors.white : Colors.black,
+                      fontFamily: 'Borno',
+                    ),
                   ),
-                  const Text('Flutter Shikhi'),
                 ],
               ),
               elevation: 0,
@@ -53,7 +59,7 @@ class MyHomePage extends StatelessWidget {
                     builder: (controller) {
                       return Column(
                         children: [
-                          const SizedBox(height: 15),
+                          const SizedBox(height: 20),
                           ReusableTextFormField(
                             controller: controller,
                             searchController: controller.searchQuery,

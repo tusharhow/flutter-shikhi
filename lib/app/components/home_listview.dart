@@ -28,7 +28,7 @@ class HomeListView extends StatelessWidget {
                     topic['title'],
                     style: TextStyle(
                       fontFamily: 'Borno',
-                      fontSize: 22,
+                      fontSize: 20,
                       color:
                           controller.isDarkMode ? Colors.white : Colors.black,
                     ),

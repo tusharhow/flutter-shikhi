@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../data/data.dart';
 import '../desktop_details_page.dart';
 
@@ -9,6 +10,15 @@ class TabletView extends StatelessWidget {
   const TabletView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    _launchURL() async {
+      const url = 'https://github.com/tusharhow/flutter-shikhi';
+      if (await canLaunchUrl(Uri.parse(url))) {
+        await launchUrl(Uri.parse(url));
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+
     return Scaffold(
       body: SingleChildScrollView(
         child: GetBuilder<SearchController>(
@@ -43,46 +53,80 @@ class TabletView extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            TextButton(
-                                onPressed: () {},
-                                child: const Text('Home',
-                                    style: TextStyle(fontSize: 23))),
-                            const SizedBox(width: 20),
-                            TextButton(
-                                onPressed: () {
-                                 
-                                },
-                                child: const Text('About',
-                                    style: TextStyle(fontSize: 23))),
-                            const SizedBox(width: 20),
-                            TextButton(
-                                onPressed: () {
-                                  
-                                },
-                                child: const Text('Contact',
-                                    style: TextStyle(fontSize: 23))),
+                            GestureDetector(
+                              onTap: () {
+                                _launchURL();
+                              },
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.star_border_rounded),
+                                  const SizedBox(width: 5),
+                                  const Text(
+                                    'Github',
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(width: 20),
+                                  GetBuilder<SearchController>(
+                                      builder: (controller) => IconButton(
+                                          icon: Icon(
+                                            controller.isDarkMode
+                                                ? Icons.dark_mode
+                                                : Icons.light_mode,
+                                          ),
+                                          onPressed: () =>
+                                              controller.toggleDarkMode()))
+                                ],
+                              ),
+                            )
                           ],
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 80),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Column(
                         children: [
-                          Text(
-                            'Flutter Shikhi',
-                            style: TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Image.asset(
+                                'assets/logos/flutter.png',
+                                height: 160,
+                              ),
+                              const SizedBox(width: 15),
+                              Text(
+                                'ফ্লাটার শিখি',
+                                style: TextStyle(
+                                  fontSize: 70,
+                                  fontWeight: FontWeight.bold,
+                                  color: controller.isDarkMode
+                                      ? Colors.white
+                                      : Colors.black,
+                                  fontFamily: 'Borno',
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(height: 20),
-                          Text(
-                            'Flutter Shikhi is a website where you can learn flutter',
-                            style: TextStyle(fontSize: 20),
+                          const SizedBox(height: 30),
+                          const Text(
+                            'ফ্লাটার শিখির মাধ্যমে আপনি বাংলায় ফ্লাটার এর সব বিষয় শিখতে পারবেন।',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Borno',
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          const Text(
+                            'আপনি ফ্লাটার শিখি এ আপনার প্রশ্ন করতে পারবেন।',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Borno',
+                            ),
                           ),
                         ],
                       ),
@@ -97,7 +141,10 @@ class TabletView extends StatelessWidget {
                         height: 55,
                         width: MediaQuery.of(context).size.width / 1.5,
                         child: TextFormField(
-                          style: const TextStyle(color: Colors.black45),
+                          style: TextStyle(
+                              color: controller.isDarkMode
+                                  ? Colors.white54
+                                  : Colors.black45),
                           onChanged: (String query) {
                             if (query.isNotEmpty) {
                               controller.searchPost(query);
@@ -112,7 +159,10 @@ class TabletView extends StatelessWidget {
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 16, horizontal: 16),
                             hintText: 'Search a topic',
-                            hintStyle: const TextStyle(color: Colors.black38),
+                            hintStyle: TextStyle(
+                                color: controller.isDarkMode
+                                    ? Colors.white54
+                                    : Colors.black38),
                             enabledBorder: const OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.transparent),
                               borderRadius:
@@ -131,8 +181,12 @@ class TabletView extends StatelessWidget {
                                       controller.searchResult.clear();
                                       controller.update();
                                     },
-                                    icon: const Icon(Icons.clear,
-                                        color: Colors.black38),
+                                    icon: Icon(
+                                      Icons.clear,
+                                      color: controller.isDarkMode
+                                          ? Colors.white54
+                                          : Colors.black38,
+                                    ),
                                   ),
                           ),
                         ),
@@ -140,46 +194,143 @@ class TabletView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 60),
-                  CustomScrollView(
-                    primary: false,
-                    shrinkWrap: true,
-                    slivers: <Widget>[
-                      SliverPadding(
-                        padding: const EdgeInsets.all(20.0),
-                        sliver: SliverGrid.count(
-                          childAspectRatio: 4.0,
-                          crossAxisCount: 2,
-                          children: List.generate(topicData.length, (index) {
-                            final topic = topicData[index];
-                            return ListTile(
-                              title: Text(topic['title'],
-                                  style: const TextStyle(fontSize: 20)),
-                              leading: const Icon(
-                                Icons.widgets,
-                                color: Colors.blue,
-                                size: 40,
-                              ),
-                              subtitle: Text(topic['subtitle'],
-                                  style: const TextStyle(fontSize: 15)),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => BigScreenDetailsPage(
-                                      data: topic,
-                                    ),
+                  controller.searchResult.isNotEmpty
+                      ? Column(
+                          children: [
+                            const Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 20),
+                                child: Text(
+                                  'সার্চ রেজাল্ট সমূহ',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: 'Borno',
                                   ),
-                                );
-                              },
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
+                                ),
                               ),
-                            );
-                          }),
+                            ),
+                            CustomScrollView(
+                              primary: false,
+                              shrinkWrap: true,
+                              slivers: [
+                                SliverPadding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  sliver: SliverGrid.count(
+                                    childAspectRatio: 4.0,
+                                    crossAxisCount: 3,
+                                    children: List.generate(
+                                        controller.searchResult.length,
+                                        (index) {
+                                      final topic =
+                                          controller.searchResult[index];
+                                      return ListTile(
+                                        title: Text(topic['title'],
+                                            style: const TextStyle(
+                                              fontSize: 22,
+                                              fontFamily: 'Borno',
+                                            )),
+                                        leading: const Icon(
+                                          Icons.search,
+                                          color: Colors.blue,
+                                          size: 40,
+                                        ),
+                                        subtitle: Text(topic['subtitle'],
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontFamily: 'Borno',
+                                              color: controller.isDarkMode
+                                                  ? Colors.white54
+                                                  : Colors.black45,
+                                            )),
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  BigScreenDetailsPage(
+                                                data: topic,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      );
+                                    }),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      : CustomScrollView(
+                          primary: false,
+                          shrinkWrap: true,
+                          slivers: <Widget>[
+                            SliverPadding(
+                              padding: const EdgeInsets.all(20.0),
+                              sliver: SliverGrid.count(
+                                childAspectRatio: 4.0,
+                                crossAxisCount: 3,
+                                children:
+                                    List.generate(topicData.length, (index) {
+                                  final topic = topicData[index];
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ListTile(
+                                      title: Text(topic['title'],
+                                          style: const TextStyle(
+                                            fontSize: 22,
+                                            fontFamily: 'Borno',
+                                          )),
+                                      leading: const Icon(
+                                        Icons.widgets,
+                                        color: Colors.blue,
+                                        size: 40,
+                                      ),
+                                      subtitle: Text(topic['subtitle'],
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: 'GolestaBorno',
+                                            color: controller.isDarkMode
+                                                ? Colors.white54
+                                                : Colors.black45,
+                                          )),
+                                      hoverColor: controller.isDarkMode
+                                          ? Colors.blue.shade300
+                                          : Colors.blue.shade100,
+                                      tileColor: controller.isDarkMode
+                                          ? Colors.black12
+                                          : Colors.white,
+                                      isThreeLine: true,
+                                      trailing: Icon(Icons.arrow_forward_ios,
+                                          color: controller.isDarkMode
+                                              ? Colors.white54
+                                              : Colors.black45),
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                            builder: (context) =>
+                                                BigScreenDetailsPage(
+                                              data: topic,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                    ),
+                                  );
+                                }),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  )
                 ],
               );
             }),
