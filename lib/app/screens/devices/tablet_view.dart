@@ -21,8 +21,8 @@ class TabletView extends StatelessWidget {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: GetBuilder<SearchController>(
-            init: SearchController(),
+        child: GetBuilder<BlogController>(
+            init: BlogController(),
             builder: (controller) {
               return Column(
                 children: [
@@ -59,21 +59,33 @@ class TabletView extends StatelessWidget {
                               },
                               child: Row(
                                 children: [
-                                  const Icon(Icons.star_border_rounded),
+                                  Icon(
+                                    Icons.star_border_rounded,
+                                    color: controller.isDarkMode
+                                        ? Colors.white60
+                                        : Colors.black54,
+                                  ),
                                   const SizedBox(width: 5),
-                                  const Text(
+                                  Text(
                                     'Github',
                                     style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold),
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                      color: controller.isDarkMode
+                                          ? Colors.white60
+                                          : Colors.black54,
+                                    ),
                                   ),
                                   const SizedBox(width: 20),
-                                  GetBuilder<SearchController>(
+                                  GetBuilder<BlogController>(
                                       builder: (controller) => IconButton(
                                           icon: Icon(
                                             controller.isDarkMode
                                                 ? Icons.dark_mode
                                                 : Icons.light_mode,
+                                            color: controller.isDarkMode
+                                                ? Colors.white60
+                                                : Colors.black54,
                                           ),
                                           onPressed: () =>
                                               controller.toggleDarkMode()))
@@ -113,19 +125,25 @@ class TabletView extends StatelessWidget {
                             ],
                           ),
                           const SizedBox(height: 30),
-                          const Text(
+                          Text(
                             'ফ্লাটার শিখির মাধ্যমে আপনি বাংলায় ফ্লাটার এর সব বিষয় শিখতে পারবেন।',
                             style: TextStyle(
                               fontSize: 20,
                               fontFamily: 'Borno',
+                              color: controller.isDarkMode
+                                  ? Colors.white60
+                                  : Colors.black54,
                             ),
                           ),
                           const SizedBox(height: 10),
-                          const Text(
+                          Text(
                             'আপনি ফ্লাটার শিখি এ আপনার প্রশ্ন করতে পারবেন।',
                             style: TextStyle(
                               fontSize: 20,
                               fontFamily: 'Borno',
+                              color: controller.isDarkMode
+                                  ? Colors.white60
+                                  : Colors.black54,
                             ),
                           ),
                         ],
@@ -158,7 +176,7 @@ class TabletView extends StatelessWidget {
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 16, horizontal: 16),
-                            hintText: 'Search a topic',
+                            hintText: 'কীসের উপর সার্চ করতে চান?',
                             hintStyle: TextStyle(
                                 color: controller.isDarkMode
                                     ? Colors.white54
@@ -266,71 +284,57 @@ class TabletView extends StatelessWidget {
                             ),
                           ],
                         )
-                      : CustomScrollView(
+                      : GridView.builder(
                           primary: false,
                           shrinkWrap: true,
-                          slivers: <Widget>[
-                            SliverPadding(
-                              padding: const EdgeInsets.all(20.0),
-                              sliver: SliverGrid.count(
-                                childAspectRatio: 4.0,
-                                crossAxisCount: 3,
-                                children:
-                                    List.generate(topicData.length, (index) {
-                                  final topic = topicData[index];
-                                  return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: ListTile(
-                                      title: Text(topic['title'],
-                                          style: const TextStyle(
-                                            fontSize: 22,
-                                            fontFamily: 'Borno',
-                                          )),
-                                      leading: const Icon(
-                                        Icons.widgets,
-                                        color: Colors.blue,
-                                        size: 40,
-                                      ),
-                                      subtitle: Text(topic['subtitle'],
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontFamily: 'GolestaBorno',
-                                            color: controller.isDarkMode
-                                                ? Colors.white54
-                                                : Colors.black45,
-                                          )),
-                                      hoverColor: controller.isDarkMode
-                                          ? Colors.blue.shade300
-                                          : Colors.blue.shade100,
-                                      tileColor: controller.isDarkMode
-                                          ? Colors.black12
-                                          : Colors.white,
-                                      isThreeLine: true,
-                                      trailing: Icon(Icons.arrow_forward_ios,
-                                          color: controller.isDarkMode
-                                              ? Colors.white54
-                                              : Colors.black45),
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                            builder: (context) =>
-                                                BigScreenDetailsPage(
-                                              data: topic,
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(15),
+                          itemCount: topicData.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 3.8,
+                          ),
+                          itemBuilder: (context, index) {
+                            final topic = topicData[index];
+                            return Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: ListTile(
+                                title: Center(
+                                  child: Text(
+                                    topic['title'],
+                                    style: TextStyle(
+                                      fontSize: 23,
+                                      fontFamily: 'Borno',
+                                      fontWeight: FontWeight.bold,
+                                      color: controller.isDarkMode
+                                          ? Colors.white60
+                                          : Colors.black54,
+                                    ),
+                                  ),
+                                ),
+                                hoverColor: controller.isDarkMode
+                                    ? Colors.blue.shade300
+                                    : Colors.blue.shade100,
+                                tileColor: controller.isDarkMode
+                                    ? Colors.black12
+                                    : Colors.white,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) =>
+                                          BigScreenDetailsPage(
+                                        data: topic,
                                       ),
                                     ),
                                   );
-                                }),
+                                },
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
+                            );
+                          },
+                        )
                 ],
               );
             }),

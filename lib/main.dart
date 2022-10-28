@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
     bool isDarkMode = storage.read('isDarkMode') ?? false;
     return GetMaterialApp(
       title: 'ফ্লাটার শিখি',
-    
       debugShowCheckedModeBanner: false,
       theme: isDarkMode
           ? ThemeData.dark(

@@ -8,7 +8,7 @@ class SearchResultWidget extends StatelessWidget {
     Key? key,
     required this.controller,
   }) : super(key: key);
-  final SearchController controller;
+  final BlogController controller;
   @override
   Widget build(BuildContext context) {
     return Column(

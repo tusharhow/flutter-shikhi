@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/data/data.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:intl/intl.dart';
 
-class SearchController extends GetxController {
+class BlogController extends GetxController {
   final searchResult = [];
   final TextEditingController searchQuery = TextEditingController();
 
@@ -23,7 +22,6 @@ class SearchController extends GetxController {
     update();
   }
 
-  // generate related posts
   final relatedPosts = [];
   List<dynamic> relatedPostsFunc(String title) {
     for (final post in topicData) {
@@ -31,6 +29,7 @@ class SearchController extends GetxController {
         relatedPosts.add(post);
       }
     }
+    update();
     return relatedPosts;
   }
 
@@ -39,17 +38,12 @@ class SearchController extends GetxController {
   void toggleDarkMode() {
     isDarkMode = !isDarkMode;
     Get.changeTheme(isDarkMode
-        ? ThemeData.dark(
-            useMaterial3: true,
-          )
-        : ThemeData.light(
-            useMaterial3: true,
-          ));
+        ? ThemeData.dark(useMaterial3: true)
+        : ThemeData.light(useMaterial3: true));
     GetStorage().write('isDarkMode', isDarkMode);
     update();
   }
 
-  // bengali week names
   final List<String> bengaliWeekNames = [
     'রবিবার',
     'সোমবার',

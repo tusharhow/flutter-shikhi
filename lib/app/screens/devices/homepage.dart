@@ -10,12 +10,13 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SearchController>(
-        init: SearchController(),
+    return GetBuilder<BlogController>(
+        init: BlogController(),
         builder: (controller) {
           return Scaffold(
-            backgroundColor:
-                controller.isDarkMode ? Colors.black : Colors.white,
+            backgroundColor: controller.isDarkMode
+                ? const Color(0xff303030)
+                : const Color(0xffFAFAFA),
             appBar: AppBar(
               title: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -36,10 +37,11 @@ class MyHomePage extends StatelessWidget {
                 ],
               ),
               elevation: 0,
-              backgroundColor:
-                  controller.isDarkMode ? Colors.black : Colors.white,
+              backgroundColor: controller.isDarkMode
+                  ? const Color(0xff303030)
+                  : const Color(0xffFAFAFA),
               actions: [
-                GetBuilder<SearchController>(
+                GetBuilder<BlogController>(
                     builder: (controller) => IconButton(
                         icon: Padding(
                           padding: const EdgeInsets.only(right: 10.0),
@@ -54,15 +56,15 @@ class MyHomePage extends StatelessWidget {
             ),
             body: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                child: GetBuilder<SearchController>(
-                    init: SearchController(),
+                child: GetBuilder<BlogController>(
+                    init: BlogController(),
                     builder: (controller) {
                       return Column(
                         children: [
                           const SizedBox(height: 20),
                           ReusableTextFormField(
                             controller: controller,
-                            searchController: controller.searchQuery,
+                            textController: controller.searchQuery,
                           ),
                           const SizedBox(height: 20),
                           controller.searchResult.isNotEmpty

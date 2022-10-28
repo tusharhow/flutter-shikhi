@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import '../controllers/search_controller.dart';
+import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 
 class ReusableTextFormField extends StatelessWidget {
   ReusableTextFormField({
     Key? key,
     required this.controller,
-    required this.searchController,
+    required this.textController,
   }) : super(key: key);
-  TextEditingController searchController;
-  final SearchController controller;
+  TextEditingController textController;
+  final BlogController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +28,15 @@ class ReusableTextFormField extends StatelessWidget {
               controller.update();
             }
           },
-          controller: searchController,
+          controller: textController,
           decoration: InputDecoration(
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-            hintText: 'Search a topic',
+            hintText: 'কীসের উপর সার্চ করতে চান?',
             hintStyle: TextStyle(
-                color: controller.isDarkMode ? Colors.white : Colors.black38),
+              color: controller.isDarkMode ? Colors.white38 : Colors.black38,
+              fontSize: 15,
+            ),
             enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -43,11 +45,11 @@ class ReusableTextFormField extends StatelessWidget {
               borderSide: BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
-            suffixIcon: searchController.text.isEmpty
+            suffixIcon: textController.text.isEmpty
                 ? null
                 : IconButton(
                     onPressed: () {
-                      searchController.clear();
+                      textController.clear();
                       controller.searchResult.clear();
                       controller.update();
                     },

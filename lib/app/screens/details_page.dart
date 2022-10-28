@@ -1,16 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:widget_with_codeview/widget_with_codeview.dart';
 
 class DetailsPage extends StatelessWidget {
   const DetailsPage({Key? key, required this.data}) : super(key: key);
   final data;
-
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SearchController>(
-        init: SearchController(),
+    final formatDate = DateFormat('dd-MM-yyyy : hh-mm').format(DateTime.now());
+    return GetBuilder<BlogController>(
+        init: BlogController(),
         builder: (controller) {
           return Scaffold(
             appBar: AppBar(
@@ -19,6 +21,12 @@ class DetailsPage extends StatelessWidget {
                 style: const TextStyle(
                   fontFamily: 'GolestaBorno',
                 ),
+              ),
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Get.back();
+                },
               ),
               elevation: 0,
             ),
@@ -29,6 +37,33 @@ class DetailsPage extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 15),
+                    Center(
+                      child: Image.asset(
+                        data['image1'],
+                        height: 300,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text(formatDate.toString(),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'Borno',
+                        )),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'আজ ${controller.weekDayToBengali(DateFormat('EEEE').format(DateTime.now()))}',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Borno',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
                     SelectableText(
                       data['desc1'] ?? '',
                       style: const TextStyle(
@@ -39,22 +74,9 @@ class DetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    FadeInImage.assetNetwork(
-                      placeholder: 'assets/icons/load.png',
-                      image: data['image1'],
+                    Image.asset(
+                      data['image1'],
                       height: 200,
-                      fadeInCurve: Curves.easeIn,
-                      fadeInDuration: const Duration(seconds: 1),
-                      fadeOutCurve: Curves.easeOut,
-                      fadeOutDuration: const Duration(seconds: 1),
-                      imageErrorBuilder: (context, error, stackTrace) =>
-                          const Center(
-                        child: Icon(
-                          Icons.error,
-                          size: 35,
-                          color: Colors.red,
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -69,22 +91,9 @@ class DetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    FadeInImage.assetNetwork(
-                      placeholder: 'assets/icons/load.png',
-                      image: data['image2'],
+                    Image.asset(
+                      data['image2'],
                       height: 200,
-                      fadeInCurve: Curves.easeIn,
-                      fadeInDuration: const Duration(seconds: 1),
-                      fadeOutCurve: Curves.easeOut,
-                      fadeOutDuration: const Duration(seconds: 1),
-                      imageErrorBuilder: (context, error, stackTrace) =>
-                          const Center(
-                        child: Icon(
-                          Icons.error,
-                          size: 35,
-                          color: Colors.red,
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -99,22 +108,9 @@ class DetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    FadeInImage.assetNetwork(
-                      placeholder: 'assets/icons/load.png',
-                      image: data['image3'],
+                    Image.asset(
+                      data['image3'],
                       height: 200,
-                      fadeInCurve: Curves.easeIn,
-                      fadeInDuration: const Duration(seconds: 1),
-                      fadeOutCurve: Curves.easeOut,
-                      fadeOutDuration: const Duration(seconds: 1),
-                      imageErrorBuilder: (context, error, stackTrace) =>
-                          const Center(
-                        child: Icon(
-                          Icons.error,
-                          size: 35,
-                          color: Colors.red,
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -129,22 +125,9 @@ class DetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    FadeInImage.assetNetwork(
-                      placeholder: 'assets/icons/load.png',
-                      image: data['image4'],
+                    Image.asset(
+                      data['image4'],
                       height: 200,
-                      fadeInCurve: Curves.easeIn,
-                      fadeInDuration: const Duration(seconds: 1),
-                      fadeOutCurve: Curves.easeOut,
-                      fadeOutDuration: const Duration(seconds: 1),
-                      imageErrorBuilder: (context, error, stackTrace) =>
-                          const Center(
-                        child: Icon(
-                          Icons.error,
-                          size: 35,
-                          color: Colors.red,
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -167,22 +150,9 @@ class DetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    FadeInImage.assetNetwork(
-                      placeholder: 'assets/icons/load.png',
-                      image: data['image5'],
+                    Image.asset(
+                      data['image5'],
                       height: 200,
-                      fadeInCurve: Curves.easeIn,
-                      fadeInDuration: const Duration(seconds: 1),
-                      fadeOutCurve: Curves.easeOut,
-                      fadeOutDuration: const Duration(seconds: 1),
-                      imageErrorBuilder: (context, error, stackTrace) =>
-                          const Center(
-                        child: Icon(
-                          Icons.error,
-                          size: 35,
-                          color: Colors.red,
-                        ),
-                      ),
                     ),
                     const SizedBox(
                       height: 20,
@@ -199,6 +169,93 @@ class DetailsPage extends StatelessWidget {
                         child: data['preview'],
                       ),
                     ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Related Posts',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontFamily: 'GolestaBorno',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    controller.relatedPosts.isEmpty
+                        ? const Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : SizedBox(
+                            child: ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: controller.relatedPosts.length,
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (context) => DetailsPage(
+                                                data: controller
+                                                    .relatedPosts[index])));
+                                  },
+                                  child: Card(
+                                    elevation: 0,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        children: [
+                                          Image.asset(
+                                            controller.relatedPosts[index]
+                                                ['image1'],
+                                            height: 100,
+                                            width: 100,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  controller.relatedPosts[index]
+                                                      ['title'],
+                                                  style: const TextStyle(
+                                                    fontSize: 18,
+                                                    fontFamily: 'GolestaBorno',
+                                                  ),
+                                                  maxLines: 1,
+                                                ),
+                                                const SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Text(
+                                                  controller.relatedPosts[index]
+                                                      ['desc1'],
+                                                  style: const TextStyle(
+                                                    fontSize: 16,
+                                                    fontFamily: 'GolestaBorno',
+                                                  ),
+                                                  maxLines: 2,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
                     const SizedBox(
                       height: 20,
                     ),
