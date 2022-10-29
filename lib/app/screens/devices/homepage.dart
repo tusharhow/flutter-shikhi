@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../components/home_listview.dart';
 import '../../components/reusable_textfield.dart';
 import '../../components/search_result_widget.dart';
+import '../../data/data.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class MyHomePage extends StatelessWidget {
     return GetBuilder<BlogController>(
         init: BlogController(),
         builder: (controller) {
+          final postController = Get.put(PostController());
           return Scaffold(
             backgroundColor: controller.isDarkMode
                 ? const Color(0xff303030)
@@ -64,12 +66,14 @@ class MyHomePage extends StatelessWidget {
                           const SizedBox(height: 20),
                           ReusableTextFormField(
                             controller: controller,
-                            textController: controller.searchQuery,
+                            textController: postController.searchQuery,
+                            postController: postController,
                           ),
                           const SizedBox(height: 20),
-                          controller.searchResult.isNotEmpty
+                          postController.searhResults.isNotEmpty
                               ? SearchResultWidget(
                                   controller: controller,
+                                  postController: postController,
                                 )
                               : const HomeListView(),
                           const SizedBox(height: 16),

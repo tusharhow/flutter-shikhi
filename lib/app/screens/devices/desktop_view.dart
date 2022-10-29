@@ -1,8 +1,14 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
+import 'package:flutter_shikhi/app/models/post_model.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../components/footer_widget.dart';
+import '../../components/top_header_widget.dart';
 import '../../data/data.dart';
 import '../desktop_details_page.dart';
 
@@ -25,315 +31,266 @@ class DesktopView extends StatelessWidget {
         child: GetBuilder<BlogController>(
             init: BlogController(),
             builder: (controller) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 200),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 0, right: 100, left: 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/logos/logo.png',
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  _launchURL();
-                                },
-                                child: Row(
+              final postController = Get.put(PostController());
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 200),
+                    child: Column(
+                      children: [
+                        TopHeaderDesktop(
+                          controller: controller,
+                        ),
+                        const SizedBox(height: 50),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              children: [
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Icon(
-                                      Icons.star_border_rounded,
-                                      color: controller.isDarkMode
-                                          ? Colors.white60
-                                          : Colors.black54,
+                                    Image.asset(
+                                      'assets/logos/flutter.png',
+                                      height: 160,
                                     ),
-                                    const SizedBox(width: 5),
+                                    const SizedBox(width: 15),
                                     Text(
-                                      'Github',
+                                      'ফ্লাটার শিখি',
                                       style: TextStyle(
-                                        fontSize: 17,
+                                        fontSize: 70,
                                         fontWeight: FontWeight.bold,
                                         color: controller.isDarkMode
-                                            ? Colors.white60
-                                            : Colors.black54,
+                                            ? Colors.white
+                                            : Colors.black,
+                                        fontFamily: 'Borno',
                                       ),
                                     ),
-                                    const SizedBox(width: 20),
-                                    GetBuilder<BlogController>(
-                                        builder: (controller) => IconButton(
-                                            icon: Icon(
-                                              controller.isDarkMode
-                                                  ? Icons.dark_mode
-                                                  : Icons.light_mode,
-                                              color: controller.isDarkMode
-                                                  ? Colors.white60
-                                                  : Colors.black54,
-                                            ),
-                                            onPressed: () =>
-                                                controller.toggleDarkMode()))
                                   ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 50),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Image.asset(
-                                  'assets/logos/flutter.png',
-                                  height: 160,
-                                ),
-                                const SizedBox(width: 15),
-                                Text(
-                                  'ফ্লাটার শিখি',
-                                  style: TextStyle(
-                                    fontSize: 70,
-                                    fontWeight: FontWeight.bold,
-                                    color: controller.isDarkMode
-                                        ? Colors.white
-                                        : Colors.black,
-                                    fontFamily: 'Borno',
-                                  ),
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 30),
-                            Text(
-                              'ফ্লাটার শিখির মাধ্যমে আপনি বাংলায় ফ্লাটার এর সব বিষয় শিখতে পারবেন।',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Borno',
-                                color: controller.isDarkMode
-                                    ? Colors.white60
-                                    : Colors.black54,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Text(
-                              'আপনি ফ্লাটার শিখি এ আপনার প্রশ্ন করতে পারবেন।',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Borno',
-                                color: controller.isDarkMode
-                                    ? Colors.white60
-                                    : Colors.black54,
-                              ),
-                            ),
                           ],
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 30),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Card(
-                        elevation: 5,
-                        child: SizedBox(
-                          height: 55,
-                          width: MediaQuery.of(context).size.width / 3,
-                          child: TextFormField(
-                            style: TextStyle(
-                                color: controller.isDarkMode
-                                    ? Colors.white
-                                    : Colors.black45),
-                            onChanged: (String query) {
-                              if (query.isNotEmpty) {
-                                controller.searchPost(query);
-                                controller.update();
-                              } else {
-                                controller.searchResult.clear();
-                                controller.update();
-                              }
-                            },
-                            controller: controller.searchQuery,
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 16, horizontal: 16),
-                              hintText: 'কীসের উপর সার্চ করতে চান?',
-                              hintStyle: TextStyle(
-                                color: controller.isDarkMode
-                                    ? Colors.white54
-                                    : Colors.black45,
+                        const SizedBox(height: 30),
+                        Text(
+                          'ডেভেলপারদের জন্য, ডেভেলপারদের দ্বারা, মাতৃভাষা বাংলায়\nসবচেয়ে বড় ফ্লাটার টিউটোরিয়াল ভান্ডার',
+                          style: TextStyle(
+                            fontSize: 23,
+                            fontFamily: 'Borno',
+                            color: controller.isDarkMode
+                                ? Colors.white60
+                                : Colors.black54,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 30),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Card(
+                            elevation: 5,
+                            child: SizedBox(
+                              height: 55,
+                              width: MediaQuery.of(context).size.width / 3,
+                              child: TextFormField(
+                                style: TextStyle(
+                                    color: controller.isDarkMode
+                                        ? Colors.white
+                                        : Colors.black45),
+                                onChanged: (String query) {
+                                  if (query.isNotEmpty) {
+                                    postController.searchPosts(query);
+                                    controller.update();
+                                  } else {
+                                    postController.searhResults.clear();
+                                    controller.update();
+                                  }
+                                },
+                                controller: postController.searchQuery,
+                                decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 16, horizontal: 16),
+                                  hintText: 'কীসের উপর সার্চ করতে চান?',
+                                  hintStyle: TextStyle(
+                                    color: controller.isDarkMode
+                                        ? Colors.white54
+                                        : Colors.black45,
+                                  ),
+                                  enabledBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  focusedBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  suffixIcon: postController
+                                          .searchQuery.text.isEmpty
+                                      ? null
+                                      : IconButton(
+                                          onPressed: () {
+                                            postController.searchQuery.clear();
+                                            postController.searhResults.clear();
+                                            controller.update();
+                                          },
+                                          icon: Icon(Icons.clear,
+                                              color: controller.isDarkMode
+                                                  ? Colors.white
+                                                  : Colors.black45),
+                                        ),
+                                ),
                               ),
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                              ),
-                              focusedBorder: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                              ),
-                              suffixIcon: controller.searchQuery.text.isEmpty
-                                  ? null
-                                  : IconButton(
-                                      onPressed: () {
-                                        controller.searchQuery.clear();
-                                        controller.searchResult.clear();
-                                        controller.update();
-                                      },
-                                      icon: Icon(Icons.clear,
-                                          color: controller.isDarkMode
-                                              ? Colors.white
-                                              : Colors.black45),
-                                    ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    const SizedBox(height: 80),
-                    controller.searchResult.isNotEmpty
-                        ? Column(
-                            children: [
-                              const Align(
-                                alignment: Alignment.centerLeft,
-                                child: Padding(
-                                  padding: EdgeInsets.only(left: 20),
-                                  child: Text(
-                                    'সার্চ রেজাল্ট সমূহ',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: 'Borno',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              CustomScrollView(
-                                primary: false,
-                                shrinkWrap: true,
-                                slivers: [
-                                  SliverPadding(
-                                    padding: const EdgeInsets.all(16.0),
-                                    sliver: SliverGrid.count(
-                                      childAspectRatio: 4.0,
-                                      crossAxisCount: 3,
-                                      children: List.generate(
-                                          controller.searchResult.length,
-                                          (index) {
-                                        final topic =
-                                            controller.searchResult[index];
-                                        return ListTile(
-                                          title: Text(topic['title'],
-                                              style: const TextStyle(
-                                                fontSize: 22,
-                                                fontFamily: 'Borno',
-                                              )),
-                                          leading: const Icon(
-                                            Icons.search,
-                                            color: Colors.blue,
-                                            size: 40,
-                                          ),
-                                          subtitle: Text(topic['subtitle'],
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontFamily: 'Borno',
-                                                color: controller.isDarkMode
-                                                    ? Colors.white54
-                                                    : Colors.black45,
-                                              )),
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              CupertinoPageRoute(
-                                                builder: (context) =>
-                                                    BigScreenDetailsPage(
-                                                  data: topic,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                        );
-                                      }),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        : GridView.builder(
-                            primary: false,
-                            shrinkWrap: true,
-                            itemCount: topicData.length,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              childAspectRatio: 3.8,
-                            ),
-                            itemBuilder: (context, index) {
-                              final topic = topicData[index];
-                              return Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: ListTile(
-                                  title: Center(
-                                    child: Text(
-                                      topic['title'],
-                                      style: TextStyle(
-                                        fontSize: 23,
-                                        fontFamily: 'Borno',
-                                        fontWeight: FontWeight.bold,
-                                        color: controller.isDarkMode
-                                            ? Colors.white60
-                                            : Colors.black54,
-                                      ),
-                                    ),
-                                  ),
-                                  hoverColor: controller.isDarkMode
-                                      ? Colors.blue.shade100
-                                      : Colors.blue.shade100,
-                                  tileColor: controller.isDarkMode
-                                      ? Colors.black12
-                                      : Colors.white,
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      CupertinoPageRoute(
-                                        builder: (context) =>
-                                            BigScreenDetailsPage(
-                                          data: topic,
+                        const SizedBox(height: 80),
+                        postController.searhResults.isNotEmpty
+                            ? Column(
+                                children: [
+                                  const Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: 20),
+                                      child: Text(
+                                        'সার্চ রেজাল্ট সমূহ',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontFamily: 'Borno',
                                         ),
                                       ),
-                                    );
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                          )
-                  ],
-                ),
+                                  CustomScrollView(
+                                    primary: false,
+                                    shrinkWrap: true,
+                                    slivers: [
+                                      SliverPadding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        sliver: SliverGrid.count(
+                                          childAspectRatio: 4.0,
+                                          crossAxisCount: 3,
+                                          children: List.generate(
+                                              postController.searhResults
+                                                  .length, (index) {
+                                            final topic = postController
+                                                .searhResults[index];
+                                            return ListTile(
+                                              title: Text(topic.title,
+                                                  style: const TextStyle(
+                                                    fontSize: 22,
+                                                    fontFamily: 'Borno',
+                                                  )),
+                                              leading: const Icon(
+                                                Icons.search,
+                                                color: Colors.blue,
+                                                size: 40,
+                                              ),
+                                              subtitle: Text(topic.subtitle,
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontFamily: 'Borno',
+                                                    color: controller.isDarkMode
+                                                        ? Colors.white54
+                                                        : Colors.black45,
+                                                  )),
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  CupertinoPageRoute(
+                                                    builder: (context) =>
+                                                        BigScreenDetailsPage(
+                                                      post: topic,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                            );
+                                          }),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            : FutureBuilder<List<PostModel>>(
+                                future: postController.fetchPosts(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    return GridView.builder(
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      itemCount: snapshot.data!.length,
+                                      gridDelegate:
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        childAspectRatio: 5,
+                                      ),
+                                      itemBuilder: (context, index) {
+                                        final topic = snapshot.data![index];
+                                        return Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Card(
+                                            elevation: 1,
+                                            child: ListTile(
+                                              title: Center(
+                                                child: Text(
+                                                  topic.title,
+                                                  style: TextStyle(
+                                                    fontSize: 22,
+                                                    fontFamily: 'Borno',
+                                                    fontWeight: FontWeight.bold,
+                                                    color: controller.isDarkMode
+                                                        ? Colors.white60
+                                                        : Colors.black54,
+                                                  ),
+                                                ),
+                                              ),
+                                              hoverColor: controller.isDarkMode
+                                                  ? Colors.blue.shade300
+                                                  : Colors.blue.shade100,
+                                              tileColor: controller.isDarkMode
+                                                  ? Colors.black12
+                                                  : Colors.white,
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  CupertinoPageRoute(
+                                                    builder: (context) =>
+                                                        BigScreenDetailsPage(
+                                                      post: topic,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  } else {
+                                    return const Center(
+                                        child: CircularProgressIndicator());
+                                  }
+                                }),
+                        const SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 80),
+                  const FooterWidget(),
+                ],
               );
             }),
       ),

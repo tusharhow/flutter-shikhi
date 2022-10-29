@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shikhi/app/data/data.dart';
 
 import '../controllers/search_controller.dart';
 import '../screens/details_page.dart';
@@ -7,8 +8,10 @@ class SearchResultWidget extends StatelessWidget {
   const SearchResultWidget({
     Key? key,
     required this.controller,
+    required this.postController,
   }) : super(key: key);
   final BlogController controller;
+  final PostController postController;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,7 +33,7 @@ class SearchResultWidget extends StatelessWidget {
         ListView.builder(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
-          itemCount: controller.searchResult.length,
+          itemCount: postController.searhResults.length,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               onTap: () {
@@ -38,20 +41,20 @@ class SearchResultWidget extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => DetailsPage(
-                      data: controller.searchResult[index],
+                      post: postController.searhResults[index],
                     ),
                   ),
                 );
               },
               title: Text(
-                controller.searchResult[index]['title'] ?? '',
+                postController.searhResults[index].title,
                 style: const TextStyle(
                   fontSize: 18,
                   fontFamily: 'Borno',
                 ),
               ),
               subtitle: Text(
-                controller.searchResult[index]['subtitle'] ?? '',
+                postController.searhResults[index].subtitle,
                 style: const TextStyle(
                   fontSize: 16,
                   fontFamily: 'Borno',

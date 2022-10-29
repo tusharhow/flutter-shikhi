@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
+import 'package:flutter_shikhi/app/data/data.dart';
 
 class ReusableTextFormField extends StatelessWidget {
   ReusableTextFormField({
     Key? key,
     required this.controller,
-    required this.textController,
+    required this.textController, required this.postController,
   }) : super(key: key);
   TextEditingController textController;
   final BlogController controller;
+  final PostController postController;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,10 @@ class ReusableTextFormField extends StatelessWidget {
               color: controller.isDarkMode ? Colors.white : Colors.black45),
           onChanged: (String query) {
             if (query.isNotEmpty) {
-              controller.searchPost(query);
+              postController.searchPosts(query);
               controller.update();
             } else {
-              controller.searchResult.clear();
+              postController.searhResults.clear();
               controller.update();
             }
           },
@@ -50,7 +52,7 @@ class ReusableTextFormField extends StatelessWidget {
                 : IconButton(
                     onPressed: () {
                       textController.clear();
-                      controller.searchResult.clear();
+                      postController.searhResults.clear();
                       controller.update();
                     },
                     icon: Icon(

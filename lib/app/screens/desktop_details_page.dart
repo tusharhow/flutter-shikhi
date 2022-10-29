@@ -1,20 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
+import 'package:flutter_shikhi/app/data/data.dart';
+import 'package:flutter_shikhi/app/models/post_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:widget_with_codeview/widget_with_codeview.dart';
 
 class BigScreenDetailsPage extends StatelessWidget {
-  const BigScreenDetailsPage({Key? key, required this.data}) : super(key: key);
-  final data;
+  const BigScreenDetailsPage({Key? key, required this.post}) : super(key: key);
+  final PostModel post;
   @override
   Widget build(BuildContext context) {
     final formatDate = DateFormat('dd-MM-yyyy : hh-mm').format(DateTime.now());
     BlogController controller = Get.put(BlogController());
+    PostController postController = Get.put(PostController());
     return Scaffold(
       appBar: AppBar(
-        title: Text(data['title'] ?? 'Flutter Shikhi',
+        title: Text(post.title,
             style: const TextStyle(
               fontFamily: 'Borno',
             )),
@@ -35,10 +38,15 @@ class BigScreenDetailsPage extends StatelessWidget {
               Center(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    data['image1'],
-                    height: 400,
-                  ),
+                  child: post.image1 == ""
+                      ? Image.asset(
+                          "assets/images/flutter.png",
+                          height: 350,
+                        )
+                      : Image.asset(
+                          post.image1,
+                          height: 350,
+                        ),
                 ),
               ),
               const SizedBox(
@@ -63,7 +71,7 @@ class BigScreenDetailsPage extends StatelessWidget {
                 height: 16,
               ),
               Text(
-                data['title'] ?? '',
+                post.title,
                 style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -76,10 +84,10 @@ class BigScreenDetailsPage extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: Text(
-                  data['desc1'] ?? '',
+                  post.desc1,
                   style: const TextStyle(
                     fontSize: 20,
-                    fontFamily: 'GolestaBorno',
+                    fontFamily: 'Borno',
                   ),
                 ),
               ),
@@ -87,7 +95,7 @@ class BigScreenDetailsPage extends StatelessWidget {
                 height: 16,
               ),
               Image.asset(
-                data['image2'],
+                post.image2,
                 height: 300,
               ),
               const SizedBox(
@@ -96,10 +104,10 @@ class BigScreenDetailsPage extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: Text(
-                  data['desc2'] ?? '',
+                  post.desc2,
                   style: const TextStyle(
                     fontSize: 20,
-                    fontFamily: 'GolestaBorno',
+                    fontFamily: 'Borno',
                   ),
                 ),
               ),
@@ -107,7 +115,7 @@ class BigScreenDetailsPage extends StatelessWidget {
                 height: 16,
               ),
               Image.asset(
-                data['image3'],
+                post.image3,
                 height: 300,
               ),
               const SizedBox(
@@ -116,10 +124,10 @@ class BigScreenDetailsPage extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: Text(
-                  data['desc3'] ?? '',
+                  post.desc3,
                   style: const TextStyle(
                     fontSize: 20,
-                    fontFamily: 'GolestaBorno',
+                    fontFamily: 'Borno',
                   ),
                 ),
               ),
@@ -127,7 +135,7 @@ class BigScreenDetailsPage extends StatelessWidget {
                 height: 16,
               ),
               Image.asset(
-                data['image4'],
+                post.image4,
                 height: 300,
               ),
               const SizedBox(
@@ -136,10 +144,10 @@ class BigScreenDetailsPage extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: Text(
-                  data['desc4'] ?? '',
+                  post.desc4,
                   style: const TextStyle(
                     fontSize: 20,
-                    fontFamily: 'GolestaBorno',
+                    fontFamily: 'Borno',
                   ),
                 ),
               ),
@@ -149,10 +157,10 @@ class BigScreenDetailsPage extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: Text(
-                  data['desc5'] ?? '',
+                  post.desc5,
                   style: const TextStyle(
                     fontSize: 20,
-                    fontFamily: 'GolestaBorno',
+                    fontFamily: 'Borno',
                   ),
                 ),
               ),
@@ -167,8 +175,8 @@ class BigScreenDetailsPage extends StatelessWidget {
                   syntaxHighlighterStyle: controller.isDarkMode
                       ? SyntaxHighlighterStyle.darkThemeStyle()
                       : SyntaxHighlighterStyle.lightThemeStyle(),
-                  sourceFilePath: data['code'],
-                  child: data['preview'],
+                  sourceFilePath: post.code,
+                  child: post.preview,
                 ),
               ),
               const SizedBox(
@@ -180,76 +188,88 @@ class BigScreenDetailsPage extends StatelessWidget {
                   'Related Posts',
                   style: TextStyle(
                     fontSize: 22,
-                    fontFamily: 'GolestaBorno',
+                    fontFamily: 'Borno',
                   ),
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.5,
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                                builder: (context) => BigScreenDetailsPage(
-                                    data: controller.relatedPosts[index])));
-                      },
-                      child: Card(
-                        elevation: 0,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                controller.relatedPosts[index]['image1'],
-                                height: 100,
-                                width: 100,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      controller.relatedPosts[index]['title'],
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        fontFamily: 'GolestaBorno',
+              FutureBuilder<List<PostModel>>(
+                  future: postController.fetchRandomOrderPosts(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: 5,
+                          itemBuilder: (context, index) {
+                            final post = snapshot.data![index];
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) =>
+                                            BigScreenDetailsPage(post: post)));
+                              },
+                              child: Card(
+                                elevation: 0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                        post.image1,
+                                        height: 100,
+                                        width: 100,
                                       ),
-                                      maxLines: 1,
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      controller.relatedPosts[index]['desc1'],
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontFamily: 'GolestaBorno',
+                                      const SizedBox(
+                                        width: 10,
                                       ),
-                                      maxLines: 2,
-                                    ),
-                                  ],
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              post.title,
+                                              style: const TextStyle(
+                                                fontSize: 18,
+                                                fontFamily: 'Borno',
+                                              ),
+                                              maxLines: 1,
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              post.desc1,
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontFamily: 'Borno',
+                                              ),
+                                              maxLines: 2,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ],
-                          ),
+                            );
+                          },
                         ),
-                      ),
-                    );
-                  },
-                ),
-              ),
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  }),
               const SizedBox(
                 height: 20,
               ),
