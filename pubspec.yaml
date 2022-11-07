@@ -29,11 +29,11 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  auto_size_text: ^3.0.0
+  cloud_firestore: ^4.0.4
   cupertino_icons: ^1.0.2
+  firebase_core: ^2.1.1
   flutter:
     sdk: flutter
-  font_awesome_flutter: ^10.2.1
   get: ^4.6.5
   get_storage: ^2.0.3
   intl: ^0.17.0

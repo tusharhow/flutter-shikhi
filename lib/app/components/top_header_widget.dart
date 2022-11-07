@@ -75,7 +75,7 @@ class TopHeaderDesktop extends StatelessWidget {
                                   ? Colors.white60
                                   : Colors.black54,
                             ),
-                            onPressed: () => controller.toggleDarkMode()))
+                            onPressed: () => controller.toggleDarkMode())),
                   ],
                 ),
               )

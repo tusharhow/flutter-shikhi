@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FooterWidget extends StatelessWidget {
@@ -12,7 +11,7 @@ class FooterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 300,
+      height: 220,
       decoration: const BoxDecoration(
         color: Colors.black,
         borderRadius: BorderRadius.only(
@@ -21,72 +20,24 @@ class FooterWidget extends StatelessWidget {
         ),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // footer design
-          const SizedBox(height: 20),
           const Text(
-            'আমাদের সাথেই থাকুন',
+            'Flutter Shikhi is a free and open source project.\nWe will learn all the topics of Flutter in this project. Stay with us.',
             style: TextStyle(
-              fontSize: 30,
-              fontFamily: 'Borno',
-              color: Colors.white,
-            ),
-          ),
-
-          const SizedBox(height: 16),
-          const Text(
-            'ফ্লাটার শিখি একটি ফ্রি ওপেন সোর্স প্রোজেক্ট। আমরা এই প্রোজেক্টে\nফ্লাটার এর সব বিষয় শিখব। আমাদের সাথে থাকুন।',
-            style: TextStyle(
-              fontSize: 16,
-              fontFamily: 'Borno',
+              fontSize: 18,
               color: Colors.white,
             ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
-          RichText(
-            text: TextSpan(
-              text: 'আমাকে খুজুন এখানে ',
-              style: const TextStyle(
-                fontSize: 16,
-                fontFamily: 'Borno',
-                color: Colors.white,
-              ),
-              children: [
-                const WidgetSpan(
-                  alignment: PlaceholderAlignment.middle,
-                  child: Icon(FontAwesomeIcons.github,
-                      size: 16, color: Colors.white),
-                ),
-                TextSpan(
-                  text: ' ফ্লাটার শিখি গিটহাব',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'Borno',
-                    color: Colors.blue,
-                  ),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () async {
-                      const url = 'https://github.com/tusharhow/flutter-shikhi';
-                      if (await canLaunchUrl(Uri.parse(url))) {
-                        await launchUrl(Uri.parse(url));
-                      } else {
-                        throw 'Could not launch $url';
-                      }
-                    },
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
           const Text('Copyright © 2022 Flutter Shikhi',
               style: TextStyle(
                 fontSize: 16,
                 fontFamily: 'Borno',
                 color: Colors.white,
               )),
-          const SizedBox(height: 10),
-
+          const SizedBox(height: 5),
           Text.rich(
             TextSpan(
               text: 'Developed by ',
@@ -102,6 +53,7 @@ class FooterWidget extends StatelessWidget {
                       fontSize: 16,
                       fontFamily: 'Borno',
                       color: Colors.blue,
+                      fontWeight: FontWeight.bold,
                     ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () => launchUrl(

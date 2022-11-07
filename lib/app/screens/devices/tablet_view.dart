@@ -1,10 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
-import 'package:flutter_shikhi/app/responsive.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../components/footer_widget.dart';
 import '../../components/top_header_widget.dart';
 import '../../data/data.dart';
@@ -84,7 +81,7 @@ class TabletView extends StatelessWidget {
                                   : Colors.black45),
                           onChanged: (String query) {
                             if (query.isNotEmpty) {
-                              postController.searchPosts(query);
+                              postController.onSearchTextChanged(query.trim());
                               controller.update();
                             } else {
                               postController.searhResults.clear();

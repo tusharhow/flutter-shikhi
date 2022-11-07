@@ -1,8 +1,10 @@
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/data/codes/hello_world.dart';
 import 'package:flutter_shikhi/app/models/post_model.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'codes/theme_code.dart';
 
@@ -28,19 +30,59 @@ class PostController extends GetxController {
 
   var searhResults = <PostModel>[];
 
-  Future<List<PostModel>> searchPosts(String query) async {
-    for (final post in posts) {
-      if (post.title.toLowerCase().contains(query.toLowerCase()) ||
-          post.desc1.toLowerCase().contains(query.toLowerCase()) ||
-          post.desc2.toLowerCase().contains(query.toLowerCase()) ||
-          post.desc3.toLowerCase().contains(query.toLowerCase())) {
-        searhResults.remove(post);
-        searhResults.add(post);
+  Future<List<PostModel>> onSearchTextChanged(String text) async {
+    searhResults.clear();
+    if (text.isEmpty) {
+      update();
+      return searhResults;
+    }
+
+    for (var postDetail in posts) {
+      if (postDetail.title.toLowerCase().contains(text.toLowerCase()) ||
+          postDetail.desc1.toLowerCase().contains(text.toLowerCase()) ||
+          postDetail.desc2.toLowerCase().contains(text.toLowerCase()) ||
+          postDetail.desc3.toLowerCase().contains(text.toLowerCase())) {
+        searhResults.remove(postDetail);
+        searhResults.add(postDetail);
       }
     }
     update();
-
     return searhResults;
+  }
+
+// post reading time
+  String readingTime(String text) {
+    var words = text.split(' ');
+    var readingTime = (words.length / 200).ceil();
+    return '$readingTime মিনিট পড়ার সময়';
+  }
+
+  final _firestore = FirebaseFirestore.instance;
+
+  var postViewCountFirestore = 0.obs;
+  postViewCounterFirestore(int id) async {
+    var storage = GetStorage();
+    postViewCountFirestore.value =
+        storage.read('postViewCountFirestore$id') ?? 0;
+    postViewCountFirestore.value++;
+    storage.write('postViewCountFirestore$id', postViewCountFirestore.value);
+    print('postViewCountFirestore $id: $postViewCountFirestore');
+    await _firestore.collection('postViewCount').doc('$id').set({
+      'postViewCount': postViewCountFirestore.value,
+    });
+    update();
+  }
+
+  var postViewCount = 0.obs;
+  getPostViewCount(int id) async {
+    var storage = GetStorage();
+    postViewCount.value = storage.read('postViewCount$id') ?? 0;
+    await _firestore.collection('postViewCount').doc('$id').get().then((value) {
+      postViewCount.value = value.data()!['postViewCount'];
+      storage.write('postViewCount$id', postViewCount.value);
+      print('postViewCount $id: $postViewCount');
+    });
+    update();
   }
 
   var posts = <PostModel>[].obs;
@@ -63,7 +105,7 @@ class PostController extends GetxController {
           desc6: "হ্যালো ওয়ার্ল্ড উদাহরণ",
           code: "lib/app/data/codes/hello_world.dart",
           preview: const HelloWorldApp(),
-          image1: "",
+          image1: "assets/images/flutter.png",
           image2: "assets/images/flutter.png",
           image3: "assets/images/flutter.png",
           image4: "assets/images/flutter.png",

@@ -17,6 +17,7 @@ class PostModel {
   final String image3;
   final String image4;
   final String image5;
+ 
 
   PostModel({
     required this.desc2,
@@ -35,5 +36,6 @@ class PostModel {
     required this.title,
     required this.subtitle,
     required this.desc1,
+  
   });
 }

@@ -1,10 +1,8 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:flutter_shikhi/app/models/post_model.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../components/footer_widget.dart';
@@ -99,7 +97,8 @@ class DesktopView extends StatelessWidget {
                                         : Colors.black45),
                                 onChanged: (String query) {
                                   if (query.isNotEmpty) {
-                                    postController.searchPosts(query);
+                                    postController
+                                        .onSearchTextChanged(query.trim());
                                     controller.update();
                                   } else {
                                     postController.searhResults.clear();
@@ -225,13 +224,12 @@ class DesktopView extends StatelessWidget {
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return GridView.builder(
-                                      primary: false,
                                       shrinkWrap: true,
                                       itemCount: snapshot.data!.length,
                                       gridDelegate:
                                           const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 3,
-                                        childAspectRatio: 5,
+                                        childAspectRatio: 3.5,
                                       ),
                                       itemBuilder: (context, index) {
                                         final topic = snapshot.data![index];
@@ -244,7 +242,7 @@ class DesktopView extends StatelessWidget {
                                                 child: Text(
                                                   topic.title,
                                                   style: TextStyle(
-                                                    fontSize: 22,
+                                                    fontSize: 20,
                                                     fontFamily: 'Borno',
                                                     fontWeight: FontWeight.bold,
                                                     color: controller.isDarkMode
@@ -260,6 +258,13 @@ class DesktopView extends StatelessWidget {
                                                   ? Colors.black12
                                                   : Colors.white,
                                               onTap: () {
+                                                postController
+                                                    .postViewCounterFirestore(
+                                                  topic.id,
+                                                );
+                                                postController
+                                                    .getPostViewCount(topic.id);
+                                                postController.update();
                                                 Navigator.push(
                                                   context,
                                                   CupertinoPageRoute(

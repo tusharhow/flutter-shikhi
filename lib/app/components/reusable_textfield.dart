@@ -6,7 +6,8 @@ class ReusableTextFormField extends StatelessWidget {
   ReusableTextFormField({
     Key? key,
     required this.controller,
-    required this.textController, required this.postController,
+    required this.textController,
+    required this.postController,
   }) : super(key: key);
   TextEditingController textController;
   final BlogController controller;
@@ -23,7 +24,7 @@ class ReusableTextFormField extends StatelessWidget {
               color: controller.isDarkMode ? Colors.white : Colors.black45),
           onChanged: (String query) {
             if (query.isNotEmpty) {
-              postController.searchPosts(query);
+              postController.onSearchTextChanged(query.trim());
               controller.update();
             } else {
               postController.searhResults.clear();

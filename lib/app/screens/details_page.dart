@@ -54,7 +54,35 @@ class DetailsPage extends StatelessWidget {
                             ),
                           ),
                     const SizedBox(
-                      height: 15,
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.remove_red_eye,
+                          size: 16,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        GetBuilder<PostController>(
+                          init: PostController(),
+                          initState: (_) {},
+                          builder: (_) {
+                            return Text(
+                              _.postViewCount.toString(),
+                              style: const TextStyle(
+                                fontSize: 14,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 5,
                     ),
                     Text(formatDate.toString(),
                         style: const TextStyle(
