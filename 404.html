@@ -5,15 +5,18 @@
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
+
     The path provided below has to start and end with a slash "/" in order for
     it to work correctly.
+
     For more details:
     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
   <!-- <base href="$FLUTTER_BASE_HREF"> -->
-  <base href="/flutter-shikhi">
+  <base href="/">
   <!-- <base href="/"> -->
 
   <meta charset="UTF-8">
@@ -39,94 +42,68 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
   <style>
-    bodY {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    body {
+      background-color: #fffdfd;
     }
 
-    .center {
-      height: 100vh;
+    .loading {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #fff;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
     }
 
-    .wave {
-      width: 5px;
-      height: 100px;
-      background: linear-gradient(45deg, cyan, rgb(98, 98, 187));
-      margin: 10px;
-      animation: wave 1s linear infinite;
-      border-radius: 20px;
+    .loader {
+      border: 10px solid #f3f3f3;
+      border-radius: 50%;
+      border: 10px solid;
+      border-top: 10px solid #FFFFFF;
+      border-right: 10px solid #353434;
+      border-bottom: 10px solid #FFFFFF;
+      border-left: 10px solid #353434;
+      width: 50px;
+      height: 50px;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
     }
 
-    .wave:nth-child(2) {
-      animation-delay: 0.1s;
-    }
-
-    .wave:nth-child(3) {
-      animation-delay: 0.2s;
-    }
-
-    .wave:nth-child(4) {
-      animation-delay: 0.3s;
-    }
-
-    .wave:nth-child(5) {
-      animation-delay: 0.4s;
-    }
-
-    .wave:nth-child(6) {
-      animation-delay: 0.5s;
-    }
-
-    .wave:nth-child(7) {
-      animation-delay: 0.6s;
-    }
-
-    .wave:nth-child(8) {
-      animation-delay: 0.7s;
-    }
-
-    .wave:nth-child(9) {
-      animation-delay: 0.8s;
-    }
-
-    .wave:nth-child(10) {
-      animation-delay: 0.9s;
-    }
-
-    @keyframes wave {
+    @-webkit-keyframes spin {
       0% {
-        transform: scale(0);
-      }
-
-      50% {
-        transform: scale(1);
+        -webkit-transform: rotate(0deg);
       }
 
       100% {
-        transform: scale(0);
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
       }
     }
   </style>
 </head>
 
 <body style="overflow: hidden">
-  <div class="center">
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
+  <div class="loading">
+    <div class="loader"></div>
   </div>
+
+  <script src="main.dart.js" type="application/javascript"></script>
+  <!-- This script installs service_worker.js to provide PWA functionality to
+       application. For more information, see:
+       https://developers.google.com/web/fundamentals/primers/service-workers -->
+
   <script>
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
@@ -140,6 +117,9 @@
         return appRunner.runApp();
       });
     });
+  </script>
+  <script type="text/javascript">
+    window.flutterWebRenderer = "html";
   </script>
 </body>
 

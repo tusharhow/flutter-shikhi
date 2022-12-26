@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../controllers/search_controller.dart';
-import '../screens/devices/tablet_view.dart';
+
 
 class TopHeaderDesktop extends StatelessWidget {
   const TopHeaderDesktop({

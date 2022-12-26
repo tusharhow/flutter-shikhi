@@ -56,7 +56,7 @@ class TabletView extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   Text(
-                    'ডেভেলপারদের জন্য, ডেভেলপারদের দ্বারা, মাতৃভাষা বাংলায়\nসবচেয়ে বড় ফ্লাটার টিউটোরিয়াল ভান্ডার',
+                    'ডেভেলপারদের জন্য মাতৃভাষা বাংলায় ফ্লাটারের \n সবচেয়ে বড় টিউটোরিয়াল ভান্ডার',
                     style: TextStyle(
                       fontSize: 23,
                       fontFamily: 'Borno',

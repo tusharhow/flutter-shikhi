@@ -9,7 +9,7 @@ import 'package:get_storage/get_storage.dart';
 import 'app/screens/devices/homepage.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-void main() async {
+Future<void> main() async {
   setPathUrlStrategy();
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
