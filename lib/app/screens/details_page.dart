@@ -4,7 +4,6 @@ import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:widget_with_codeview/widget_with_codeview.dart';
-
 import '../data/data.dart';
 import '../models/post_model.dart';
 
@@ -13,7 +12,8 @@ class DetailsPage extends StatelessWidget {
   final PostModel post;
   @override
   Widget build(BuildContext context) {
-    final formatDate = DateFormat('dd-MM-yyyy : hh-mm').format(DateTime.now());
+    final formatedDate =
+        DateFormat('dd-MM-yyyy : hh-mm').format(DateTime.now());
     return GetBuilder<BlogController>(
         init: BlogController(),
         builder: (controller) {
@@ -29,7 +29,7 @@ class DetailsPage extends StatelessWidget {
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
-                  Get.back();
+                  Navigator.pop(context);
                 },
               ),
               elevation: 0,
@@ -84,7 +84,7 @@ class DetailsPage extends StatelessWidget {
                     const SizedBox(
                       height: 5,
                     ),
-                    Text(formatDate.toString(),
+                    Text(formatedDate.toString(),
                         style: const TextStyle(
                           fontSize: 16,
                           fontFamily: 'Borno',

@@ -3,13 +3,13 @@ import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:flutter_shikhi/app/data/data.dart';
 
 class ReusableTextFormField extends StatelessWidget {
-  ReusableTextFormField({
+  const ReusableTextFormField({
     Key? key,
     required this.controller,
     required this.textController,
     required this.postController,
   }) : super(key: key);
-  TextEditingController textController;
+  final TextEditingController textController;
   final BlogController controller;
   final PostController postController;
 

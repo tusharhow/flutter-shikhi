@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:flutter_shikhi/app/models/post_model.dart';

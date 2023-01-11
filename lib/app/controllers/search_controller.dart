@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shikhi/app/data/data.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

@@ -27,12 +27,8 @@ class MyApp extends StatelessWidget {
       title: 'ফ্লাটার শিখি',
       debugShowCheckedModeBanner: false,
       theme: isDarkMode
-          ? ThemeData.dark(
-              useMaterial3: true,
-            )
-          : ThemeData.light(
-              useMaterial3: true,
-            ),
+          ? ThemeData.dark(useMaterial3: true)
+          : ThemeData.light(useMaterial3: true),
       home: const Responsive(
         mobile: MyHomePage(),
         tablet: TabletView(),

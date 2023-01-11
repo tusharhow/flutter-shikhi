@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FooterWidget extends StatelessWidget {
-  const FooterWidget({
-    Key? key,
-  }) : super(key: key);
+  const FooterWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +29,7 @@ class FooterWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
-          const Text('Copyright © 2022 Flutter Shikhi',
+          const Text('Copyright © 2023 Flutter Shikhi',
               style: TextStyle(
                 fontSize: 16,
                 fontFamily: 'Borno',
