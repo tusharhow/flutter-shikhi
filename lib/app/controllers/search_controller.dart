@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class BlogController extends GetxController {
- 
   bool isDarkMode = GetStorage().read('isDarkMode') ?? false;
 
   void toggleDarkMode() {
@@ -45,4 +44,6 @@ class BlogController extends GetxController {
         return 'সমস্যা হয়েছে';
     }
   }
+
+
 }

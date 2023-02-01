@@ -57,11 +57,7 @@ class HomeListView extends StatelessWidget {
                                 ? Colors.black12
                                 : Colors.white,
                             onTap: () {
-                              postController.postViewCounterFirestore(
-                                topic.id,
-                              );
-                              postController.getPostViewCount(topic.id);
-                              postController.update();
+                           
                               Navigator.push(
                                 context,
                                 CupertinoPageRoute(
