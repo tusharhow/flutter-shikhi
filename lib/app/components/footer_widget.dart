@@ -32,7 +32,6 @@ class FooterWidget extends StatelessWidget {
           const Text('Copyright © 2023 Flutter Shikhi',
               style: TextStyle(
                 fontSize: 16,
-                fontFamily: 'Borno',
                 color: Colors.white,
               )),
           const SizedBox(height: 5),
@@ -41,7 +40,6 @@ class FooterWidget extends StatelessWidget {
               text: 'Developed by ',
               style: const TextStyle(
                 fontSize: 16,
-                fontFamily: 'Borno',
                 color: Colors.white,
               ),
               children: [
@@ -49,7 +47,6 @@ class FooterWidget extends StatelessWidget {
                     text: 'Tushar Mahmud',
                     style: const TextStyle(
                       fontSize: 16,
-                      fontFamily: 'Borno',
                       color: Colors.blue,
                       fontWeight: FontWeight.bold,
                     ),

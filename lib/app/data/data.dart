@@ -56,7 +56,11 @@ class PostController extends GetxController {
     return '$readingTime মিনিট পড়ার সময়';
   }
 
-  
+  // get post by id
+  PostModel getPostBySubtitle(String subtitle) {
+    return posts.firstWhere((element) => element.subtitle == subtitle);
+  }
+
   var posts = <PostModel>[].obs;
   bool isLoading = false;
   Future<List<PostModel>> fetchPosts() async {
@@ -84,7 +88,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 1,
           title: "ভূমিকা",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "introduction",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
       PostModel(
@@ -107,7 +111,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 2,
           title: "থিম",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "theme",
           desc1:
               "থিম যেকোন অ্যাপ্লিকেশনের জন্য UI এর অবিচ্ছেদ্য অংশ। থিমগুলি একটি অ্যাপ্লিকেশনের ফন্ট এবং রঙ ডিজাইন করতে ব্যবহার করা হয় যাতে এটি আরও উপস্থাপনযোগ্য হয়। ফ্লাটারে, থিম উইজেট একটি অ্যাপ্লিকেশনে থিম যোগ করতে ব্যবহৃত হয়। কেউ এটিকে অ্যাপ্লিকেশনের একটি নির্দিষ্ট অংশ যেমন বোতাম এবং নেভিগেশন বারের জন্য ব্যবহার করতে পারে বা সমগ্র অ্যাপ জুড়ে এটি ব্যবহার করার জন্য এটিকে অ্যাপ্লিকেশনের রুটে সংজ্ঞায়িত করতে পারে।"),
       PostModel(
@@ -130,7 +134,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 3,
           title: "অ্যাপ বার",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "appbar",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
       PostModel(
@@ -153,7 +157,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 4,
           title: "ফ্লাটার টেক্সট",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "text",
           desc1:
               "ফ্লাটারে অন্যতম একটি পাওয়ারফুল উইজেট হলো টেক্সট উইজেট। আমরা এপ্লিকেশনের মাঝে প্রচুর টেক্সট উইজেট ব্যবহার করি। এখানে আগে বানানো উইজেটের মধ্যে I Love You লেখাটা আমরা টেক্সট উইজেটের মাধ্যমে দেখিয়েছি।"),
       PostModel(
@@ -176,7 +180,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 4,
           title: "ফ্লাটার কন্টেইনার",
-          subtitle: "ফ্লাটার কন্টেইনার জানুন",
+          subtitle: "container",
           desc1:
               "ফ্লাটারে অন্যতম একটি পাওয়ারফুল উইজেট হলো টেক্সট উইজেট। আমরা এপ্লিকেশনের মাঝে প্রচুর টেক্সট উইজেট ব্যবহার করি। এখানে আগে বানানো উইজেটের মধ্যে I Love You লেখাটা আমরা টেক্সট উইজেটের মাধ্যমে দেখিয়েছি।"),
       PostModel(
@@ -199,7 +203,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 5,
           title: "ফ্লাটার ইমেজ",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "image",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
       PostModel(
@@ -222,7 +226,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 6,
           title: "ফ্লাটার বাটন",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "button",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
       PostModel(
@@ -245,7 +249,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 7,
           title: "ফ্লাটার স্লাইডার",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "slider",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
       PostModel(
@@ -268,7 +272,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 8,
           title: "ফ্লাটার স্পিনার",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "spinner",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
       PostModel(
@@ -291,7 +295,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 9,
           title: "ফ্লাটার স্ক্রল ভিউ",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "scroll-view",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
       PostModel(
@@ -314,7 +318,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 10,
           title: "ফ্লাটার স্ট্যাক",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "stack",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
       PostModel(
@@ -337,7 +341,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 11,
           title: "ফ্লাটার কার্ড",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "card",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
       PostModel(
@@ -360,7 +364,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 12,
           title: "ফ্লাটার ট্যাব",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "tab",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
       PostModel(
@@ -383,7 +387,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 13,
           title: "ফ্লাটার স্টেপার",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "stepper",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
       PostModel(
@@ -406,7 +410,7 @@ class PostController extends GetxController {
           image5: "assets/images/flutter.png",
           id: 14,
           title: "ফ্লাটার সুইচ",
-          subtitle: "ফ্লাটার এর ভূমিকা জানুন",
+          subtitle: "switch",
           desc1:
               "ফ্লাটার গুগলের তৈরী Mobile Application Development Framework। এটি সিঙ্গেল কোড বেইসড তার মানে হচ্ছে আপনি একই কোডে Android ও iOS এর জন্য মোবাইল অ্যাপ্লিকেশন তৈরী করতে পারবেন। মজার ব্যাপার হলো ফ্লাটার দিয়ে আপনি উইন্ডোজ, ম্যাক এবং উবুন্টূ অপারেটিং সিস্টেমের জন্য সফটওয়্যার বানাতে পারবেন। এর জন্য আলাদা কোড করার দরকার নেই। ফ্লাটার দিয়ে তৈরী মোবাইল অ্যাপগুলো Ionic, React Native, Xamarin এর মত Hybrid app নয় ফ্লাটার দিয়ে অ্যাপগুলো হয় সম্পূর্ণ Native, তাই এর পারফরমেন্স অসাধারণ।"),
     ]);

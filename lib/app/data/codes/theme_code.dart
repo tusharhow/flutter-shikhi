@@ -19,13 +19,13 @@ class ThemeApp extends StatelessWidget {
           bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
         ), colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.deepOrangeAccent),
       ),
-      home: const MyHomePage(),
+      home: const ThemeAppCode(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class ThemeAppCode extends StatelessWidget {
+  const ThemeAppCode({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

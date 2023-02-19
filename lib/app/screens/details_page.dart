@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:get/get.dart';
@@ -6,12 +5,16 @@ import 'package:intl/intl.dart';
 import 'package:widget_with_codeview/widget_with_codeview.dart';
 import '../data/data.dart';
 import '../models/post_model.dart';
+import '../responsive.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({Key? key, required this.post}) : super(key: key);
-  final PostModel post;
+  const DetailsPage({Key? key, required this.subtitle}) : super(key: key);
+
+  final String subtitle;
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(PostController());
+    final post = controller.getPostBySubtitle(subtitle.toString());
     final formatedDate =
         DateFormat('dd-MM-yyyy : hh-mm').format(DateTime.now());
     return GetBuilder<BlogController>(
@@ -37,7 +40,9 @@ class DetailsPage extends StatelessWidget {
             body: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: Responsive.isDesktop(context)
+                    ? const EdgeInsets.symmetric(horizontal: 200 * 2)
+                    : const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
                     const SizedBox(height: 15),
@@ -57,8 +62,8 @@ class DetailsPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(formatedDate.toString(),
-                        style: const TextStyle(
-                          fontSize: 16,
+                        style: TextStyle(
+                          fontSize: Responsive.isDesktop(context) ? 18 : 16,
                           fontFamily: 'Borno',
                         )),
                     const SizedBox(
@@ -76,8 +81,8 @@ class DetailsPage extends StatelessWidget {
                     ),
                     SelectableText(
                       post.desc1,
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        fontSize: Responsive.isDesktop(context) ? 20 : 16,
                         fontFamily: 'Borno',
                       ),
                     ),
@@ -98,8 +103,8 @@ class DetailsPage extends StatelessWidget {
                     ),
                     SelectableText(
                       post.desc2,
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        fontSize: Responsive.isDesktop(context) ? 20 : 16,
                         fontFamily: 'Borno',
                       ),
                     ),
@@ -120,8 +125,8 @@ class DetailsPage extends StatelessWidget {
                     ),
                     SelectableText(
                       post.desc3,
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        fontSize: Responsive.isDesktop(context) ? 20 : 16,
                         fontFamily: 'Borno',
                       ),
                     ),
@@ -142,8 +147,8 @@ class DetailsPage extends StatelessWidget {
                     ),
                     SelectableText(
                       post.desc4,
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        fontSize: Responsive.isDesktop(context) ? 20 : 16,
                         fontFamily: 'Borno',
                       ),
                     ),
@@ -172,8 +177,8 @@ class DetailsPage extends StatelessWidget {
                     ),
                     SelectableText(
                       post.desc5,
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        fontSize: Responsive.isDesktop(context) ? 20 : 16,
                         fontFamily: 'Borno',
                       ),
                     ),
@@ -234,12 +239,12 @@ class DetailsPage extends StatelessWidget {
                                   final post = snapshot.data![index];
                                   return GestureDetector(
                                     onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        CupertinoPageRoute(
-                                            builder: (context) =>
-                                                DetailsPage(post: post)),
-                                      );
+                                      // Navigator.push(
+                                      //   context,
+                                      //   CupertinoPageRoute(
+                                      //       builder: (context) =>
+                                      //           DetailsPage(post: post)),
+                                      // );
                                     },
                                     child: Card(
                                       elevation: 0,

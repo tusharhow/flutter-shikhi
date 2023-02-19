@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/data/data.dart';
-
+import 'package:go_router/go_router.dart';
 import '../controllers/search_controller.dart';
-import '../screens/details_page.dart';
 
 class SearchResultWidget extends StatelessWidget {
   const SearchResultWidget({
@@ -37,14 +36,7 @@ class SearchResultWidget extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailsPage(
-                      post: postController.searhResults[index],
-                    ),
-                  ),
-                );
+                context.push('/${postController.searhResults[index].subtitle}');
               },
               title: Text(
                 postController.searhResults[index].title,

@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import '../../components/footer_widget.dart';
 import '../../components/top_header_widget.dart';
 import '../../data/data.dart';
 import '../../models/post_model.dart';
-import '../desktop_details_page.dart';
 
 class TabletView extends StatelessWidget {
   const TabletView({Key? key}) : super(key: key);
@@ -178,15 +178,7 @@ class TabletView extends StatelessWidget {
                                                   : Colors.black45,
                                             )),
                                         onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            CupertinoPageRoute(
-                                              builder: (context) =>
-                                                  BigScreenDetailsPage(
-                                                post: topic,
-                                              ),
-                                            ),
-                                          );
+                                          context.push('/${topic.subtitle}');
                                         },
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
@@ -240,15 +232,7 @@ class TabletView extends StatelessWidget {
                                             ? Colors.black12
                                             : Colors.white,
                                         onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            CupertinoPageRoute(
-                                              builder: (context) =>
-                                                  BigScreenDetailsPage(
-                                                post: topic,
-                                              ),
-                                            ),
-                                          );
+                                         context.push('/${topic.subtitle}');
                                         },
                                         shape: RoundedRectangleBorder(
                                           borderRadius:

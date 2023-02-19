@@ -1,28 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
+import 'package:flutter_shikhi/app/data/codes/theme_code.dart';
 import 'package:flutter_shikhi/app/models/post_model.dart';
+import 'package:flutter_shikhi/app/responsive.dart';
+import 'package:flutter_shikhi/app/screens/devices/homepage.dart';
+import 'package:flutter_shikhi/app/screens/devices/tablet_view.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
 import '../../components/footer_widget.dart';
 import '../../components/top_header_widget.dart';
 import '../../data/data.dart';
-import '../desktop_details_page.dart';
 
 class DesktopView extends StatelessWidget {
   const DesktopView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    _launchURL() async {
-      const url = 'https://github.com/tusharhow/flutter-shikhi';
-      if (await canLaunchUrl(Uri.parse(url))) {
-        await launchUrl(Uri.parse(url));
-      } else {
-        throw 'Could not launch $url';
-      }
-    }
-
     return Scaffold(
       body: SingleChildScrollView(
         child: GetBuilder<BlogController>(
@@ -35,9 +28,7 @@ class DesktopView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 200),
                     child: Column(
                       children: [
-                        TopHeaderDesktop(
-                          controller: controller,
-                        ),
+                        TopHeaderDesktop(controller: controller),
                         const SizedBox(height: 50),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -70,14 +61,11 @@ class DesktopView extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 30),
-                        Text(
+                        const Text(
                           'ডেভেলপারদের জন্য মাতৃভাষা বাংলায় ফ্লাটারের \n সবচেয়ে বড় টিউটোরিয়াল ভান্ডার',
                           style: TextStyle(
                             fontSize: 23,
                             fontFamily: 'Borno',
-                            color: controller.isDarkMode
-                                ? Colors.white60
-                                : Colors.black54,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -196,15 +184,8 @@ class DesktopView extends StatelessWidget {
                                                         : Colors.black45,
                                                   )),
                                               onTap: () {
-                                                Navigator.push(
-                                                  context,
-                                                  CupertinoPageRoute(
-                                                    builder: (context) =>
-                                                        BigScreenDetailsPage(
-                                                      post: topic,
-                                                    ),
-                                                  ),
-                                                );
+                                                context
+                                                    .push('/${topic.subtitle}');
                                               },
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
@@ -257,15 +238,8 @@ class DesktopView extends StatelessWidget {
                                                   ? Colors.black12
                                                   : Colors.white,
                                               onTap: () {
-                                                Navigator.push(
-                                                  context,
-                                                  CupertinoPageRoute(
-                                                    builder: (context) =>
-                                                        BigScreenDetailsPage(
-                                                      post: topic,
-                                                    ),
-                                                  ),
-                                                );
+                                                context
+                                                    .push('/${topic.subtitle}');
                                               },
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:

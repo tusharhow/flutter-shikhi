@@ -1,15 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/models/post_model.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import '../controllers/search_controller.dart';
 import '../data/data.dart';
-import '../screens/details_page.dart';
 
 class HomeListView extends StatelessWidget {
-  const HomeListView({
-    Key? key,
-  }) : super(key: key);
+  const HomeListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,15 +54,7 @@ class HomeListView extends StatelessWidget {
                                 ? Colors.black12
                                 : Colors.white,
                             onTap: () {
-                           
-                              Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                  builder: (context) => DetailsPage(
-                                    post: topic,
-                                  ),
-                                ),
-                              );
+                              context.push('/${topic.subtitle}');
                             },
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),

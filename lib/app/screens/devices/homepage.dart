@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shikhi/app/controllers/search_controller.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import '../../components/home_listview.dart';
 import '../../components/reusable_textfield.dart';
 import '../../components/search_result_widget.dart';
+import '../../components/top_header_widget.dart';
 import '../../data/data.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -21,20 +23,33 @@ class MyHomePage extends StatelessWidget {
                 : const Color(0xffFAFAFA),
             appBar: AppBar(
               title: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Image.asset(
-                    'assets/logos/logo.png',
-                    height: 50,
-                  ),
-                  Text(
-                    'ফ্লাটার শিখি',
-                    style: TextStyle(
-                      fontSize: 22,
-                      color:
-                          controller.isDarkMode ? Colors.white : Colors.black,
-                      fontFamily: 'Borno',
-                    ),
+                  Row(
+                    children: [
+                      Container(
+                        height: 45,
+                        width: 135,
+                        decoration: BoxDecoration(
+                          color: controller.isDarkMode
+                              ? Colors.white
+                              : Colors.black,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'ফ্লাটার শিখি',
+                            style: TextStyle(
+                              fontSize: 26,
+                              color: controller.isDarkMode
+                                  ? Colors.black
+                                  : Colors.white,
+                              fontFamily: 'Borno',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

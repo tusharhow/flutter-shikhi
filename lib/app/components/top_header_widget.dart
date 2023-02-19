@@ -4,32 +4,36 @@ import 'package:url_launcher/url_launcher.dart';
 import '../controllers/search_controller.dart';
 
 class TopHeaderDesktop extends StatelessWidget {
-  const TopHeaderDesktop({
-    Key? key,
-    required this.controller,
-  }) : super(key: key);
+  const TopHeaderDesktop({Key? key, required this.controller})
+      : super(key: key);
   final BlogController controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 0, right: 100, left: 16),
+      padding: const EdgeInsets.only(top: 20, right: 100, left: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Image.asset(
-                'assets/logos/logo.png',
-              ),
-              Text(
-                'ফ্লাটার শিখি',
-                style: TextStyle(
-                  fontSize: 25,
+              Container(
+                height: 50,
+                width: 140,
+                decoration: BoxDecoration(
                   color: controller.isDarkMode ? Colors.white : Colors.black,
-                  fontFamily: 'Borno',
-                  fontWeight: FontWeight.w500,
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Center(
+                  child: Text(
+                    'ফ্লাটার শিখি',
+                    style: TextStyle(
+                      fontSize: 27,
+                      color:
+                          controller.isDarkMode ? Colors.black : Colors.white,
+                      fontFamily: 'Borno',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ],
